@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链世界 BlockWorld - 区块链资讯第一站</title>
-    <meta name="description" content="为您提供最新的区块链、比特币、以太坊、DeFi、Web3资讯">
+    <title>BlockWorld - #1 Blockchain & Crypto News</title>
+    <meta name="description" content="Your #1 source for Bitcoin, Ethereum, DeFi, NFT and cryptocurrency news">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -51,12 +51,6 @@
             align-items: center;
         }
         
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
         .logo {
             font-size: 1.5em;
             font-weight: 700;
@@ -65,33 +59,29 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .lang-switch {
+        .live-badge {
             display: flex;
-            gap: 4px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 4px;
-        }
-        
-        .lang-btn {
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid var(--accent-red);
             padding: 6px 14px;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 0.85em;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 16px;
-            transition: all 0.2s;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
         }
         
-        .lang-btn.active {
-            background: var(--accent);
-            color: #000;
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            animation: pulse 1s infinite;
         }
         
-        .lang-btn:hover:not(.active) {
-            color: var(--text-primary);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
         }
         
         .header-right {
@@ -269,18 +259,13 @@
             animation: pulse 1.5s infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
         .flash-time {
             font-size: 0.8em;
             color: var(--text-muted);
         }
         
         .flash-list {
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
         }
         
@@ -308,7 +293,7 @@
         }
         
         .flash-item .flash-source {
-            width: 70px;
+            width: 90px;
             flex-shrink: 0;
             font-size: 0.8em;
             color: var(--accent-blue);
@@ -388,6 +373,9 @@
             font-size: 0.95em;
             font-weight: 600;
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .coin-row {
@@ -553,14 +541,12 @@
 <body>
     <header class="header">
         <div class="header-top">
-            <div class="logo-area">
-                <div class="logo">⛓️ 链世界 BlockWorld</div>
-                <div class="lang-switch">
-                    <button class="lang-btn" onclick="setLang('zh')">中文</button>
-                    <button class="lang-btn" onclick="setLang('en')">EN</button>
-                </div>
-            </div>
+            <div class="logo">⛓️ BlockWorld</div>
             <div class="header-right">
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    LIVE
+                </div>
                 <div class="price-ticker">
                     <div class="price-item price-btc">
                         <span>₿</span><span>BTC</span>
@@ -575,16 +561,15 @@
         </div>
         <nav class="header-nav">
             <ul class="nav-list">
-                <li class="nav-item active">首页</li>
-                <li class="nav-item">行情</li>
+                <li class="nav-item active">Home</li>
+                <li class="nav-item">Markets</li>
                 <li class="nav-item">DeFi</li>
                 <li class="nav-item">NFT</li>
                 <li class="nav-item">Web3</li>
-                <li class="nav-item">元宇宙</li>
-                <li class="nav-item">监管</li>
-                <li class="nav-item">技术</li>
-                <li class="nav-item">观点</li>
-                <li class="nav-item">活动</li>
+                <li class="nav-item">Regulation</li>
+                <li class="nav-item">Tech</li>
+                <li class="nav-item">Opinion</li>
+                <li class="nav-item">Events</li>
             </ul>
         </nav>
     </header>
@@ -593,7 +578,7 @@
         <aside class="left-sidebar">
             <div class="sidebar-card">
                 <div class="card-header">
-                    <h3>🔥 热门文章</h3>
+                    <h3>🔥 Trending</h3>
                 </div>
                 <div class="card-body">
                     <ul class="hot-list">
@@ -628,6 +613,14 @@
         <li class="hot-item">
             <span class="hot-num">8</span>
             <a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a>
+        </li>
+        <li class="hot-item">
+            <span class="hot-num">9</span>
+            <a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a>
+        </li>
+        <li class="hot-item">
+            <span class="hot-num">10</span>
+            <a href="https://www.coindesk.com/business/2026/03/28/crypto-s-future-is-bright-in-the-context-of-ai-s-assault-on-software-firms-says-kraken-backed-investment-firm" target="_blank">Crypto's future is bright in the context of AI's assault on software firms, says Kraken-backed investment firm</a>
         </li></ul>
                 </div>
             </div>
@@ -636,153 +629,206 @@
         <main class="main-content">
             <section class="flash-section">
                 <div class="flash-header">
-                    <h3><span class="flash-dot"></span> 实时快讯</h3>
-                    <span class="flash-time">更新于 21:45:15</span>
+                    <h3><span class="flash-dot"></span> Breaking News</h3>
+                    <span class="flash-time">Updated 21:52:55</span>
                 </div>
                 <div class="flash-list">
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">CoinDesk</span>
             <a href="https://www.coindesk.com/business/2026/03/28/crypto-s-future-is-bright-in-the-context-of-ai-s-assault-on-software-firms-says-kraken-backed-investment-firm" target="_blank">Crypto's future is bright in the context of AI's assault on software firms, says Kraken-backed investment firm</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">The Block</span>
             <a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">The Block</span>
             <a href="https://www.theblock.co/post/395571/world-foundation-subsidiary-sells-65-million-in-wld-tokens-through-otc-deals-as-token-hits-all-time-low?utm_source=rss&utm_medium=rss" target="_blank">World Foundation subsidiary sells $65 million in WLD tokens through OTC deals as token hits all-time low</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">The Block</span>
             <a href="https://www.theblock.co/post/395568/morgan-stanley-sets-spot-bitcoin-etf-fee-at-0-14-undercutting-every-rival-on-the-market?utm_source=rss&utm_medium=rss" target="_blank">Morgan Stanley sets spot bitcoin ETF fee at 0.14%, undercutting every rival on the market</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">The Block</span>
             <a href="https://www.theblock.co/post/395549/what-the-hell-crypto-frustration-boils-over-as-stablecoin-fight-stalls-bill?utm_source=rss&utm_medium=rss" target="_blank">‘What the hell?’ — Crypto frustration boils over as stablecoin fight stalls bill</a>
         </div>
         <div class="flash-item">
-            <span class="flash-time">21:45</span>
+            <span class="flash-time">21:52</span>
             <span class="flash-source">The Block</span>
             <a href="https://www.theblock.co/post/395541/miladys-loyalty-pledge-unnecessary-culture-schism-ethereum-community?utm_source=rss&utm_medium=rss" target="_blank">Ethereum Foundation mandate sparks debate over loyalty pledges, Milady-inspired branding</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:52</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395515/california-bars-officials-prediction-market-insider-betting-federal-ban-shape?utm_source=rss&utm_medium=rss" target="_blank">California bars officials from prediction market insider betting as federal ban takes shape</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:52</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395512/ripple-ceo-garlinghouse-touts-record-q1-cautions-against-policy-weaponization-derailing-progress?utm_source=rss&utm_medium=rss" target="_blank">Ripple CEO Garlinghouse touts ‘record’ Q1, cautions against policy weaponization derailing progress</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:52</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395492/ecb-paper-defi-governance-concentrated-results-affect-regulatory-anchor-points?utm_source=rss&utm_medium=rss" target="_blank">ECB paper finds DeFi governance concentrated, warns results could affect ‘regulatory anchor points’</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:52</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395128/cryptos-popularity-among-kids-drove-x-games-moonpay-deal-new-energy?utm_source=rss&utm_medium=rss" target="_blank">Crypto’s popularity among kids drove X Games-MoonPay deal: ‘New energy and new transformation’</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:52</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395490/early-bitcoin-whale-sends-33-million-binance-extending-long-running-exchange-deposits?utm_source=rss&utm_medium=rss" target="_blank">Early bitcoin whale sends another $33 million to Binance, extending long-running exchange deposits</a>
         </div></div>
             </section>
             
             <div class="category-grid">
-        <div class="category-card">
-            <div class="category-card-header">
-                <h4>比特币 Bitcoin</h4>
-                <span class="category-tag">BTC</span>
-            </div>
-            <div class="category-card-body">
+            <div class="category-card">
+                <div class="category-card-header">
+                    <h4>Bitcoin</h4>
+                    <span class="category-tag">BTC</span>
+                </div>
+                <div class="category-card-body">
+                <div class="category-news-item">
+                    <a href="https://bitcoinist.com/how-weakening-us-labor-data-could-impact-bitcoin/" target="_blank">How Weakening US Labor Data Could Impact Bitcoin Market  — Report</a>
+                    <div class="category-news-meta">
+                        <span>Bitcoinist</span>
+                        <span>5 min ago</span>
+                    </div>
+                </div>
                 <div class="category-news-item">
                     <a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a>
                     <div class="category-news-meta">
                         <span>CoinDesk</span>
-                        <span>8 分钟前</span>
+                        <span>5 min ago</span>
                     </div>
                 </div></div>
-        </div>
-        <div class="category-card">
-            <div class="category-card-header">
-                <h4>以太坊 Ethereum</h4>
-                <span class="category-tag">ETH</span>
             </div>
-            <div class="category-card-body">
+            <div class="category-card">
+                <div class="category-card-header">
+                    <h4>Ethereum</h4>
+                    <span class="category-tag">ETH</span>
+                </div>
+                <div class="category-card-body">
                 <div class="category-news-item">
-                    <a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a>
+                    <a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a>
                     <div class="category-news-meta">
-                        <span>CoinDesk</span>
-                        <span>8 分钟前</span>
+                        <span>The Block</span>
+                        <span>5 min ago</span>
+                    </div>
+                </div>
+                <div class="category-news-item">
+                    <a href="https://cryptoslate.com/safe-2-year-treasury-starting-to-crack/" target="_blank">Is anywhere safe as Bitcoin weakens? Why even the 2-year Treasury is starting to crack</a>
+                    <div class="category-news-meta">
+                        <span>CryptoSlate</span>
+                        <span>5 min ago</span>
                     </div>
                 </div></div>
-        </div>
-        <div class="category-card">
-            <div class="category-card-header">
-                <h4>DeFi 生态</h4>
-                <span class="category-tag">DeFi</span>
             </div>
-            <div class="category-card-body">
+            <div class="category-card">
+                <div class="category-card-header">
+                    <h4>DeFi</h4>
+                    <span class="category-tag">DeFi</span>
+                </div>
+                <div class="category-card-body">
                 <div class="category-news-item">
-                    <a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a>
+                    <a href="https://decrypt.co/362633/xiaomi-mimo-v2-pro-review-so-good-mistaken-deepseek-v4" target="_blank">Xiaomi MiMo v2 Pro Review: The AI Model So Good It Was Mistaken for DeepSeek V4</a>
                     <div class="category-news-meta">
-                        <span>CoinDesk</span>
-                        <span>8 分钟前</span>
+                        <span>Decrypt</span>
+                        <span>5 min ago</span>
+                    </div>
+                </div>
+                <div class="category-news-item">
+                    <a href="https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Here’s what happened in crypto today</a>
+                    <div class="category-news-meta">
+                        <span>CoinTelegraph</span>
+                        <span>5 min ago</span>
                     </div>
                 </div></div>
-        </div>
-        <div class="category-card">
-            <div class="category-card-header">
-                <h4>NFT 与 GameFi</h4>
-                <span class="category-tag">NFT</span>
             </div>
-            <div class="category-card-body">
+            <div class="category-card">
+                <div class="category-card-header">
+                    <h4>Altcoins</h4>
+                    <span class="category-tag">ALT</span>
+                </div>
+                <div class="category-card-body">
                 <div class="category-news-item">
-                    <a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a>
+                    <a href="https://cryptoslate.com/safe-2-year-treasury-starting-to-crack/" target="_blank">Is anywhere safe as Bitcoin weakens? Why even the 2-year Treasury is starting to crack</a>
                     <div class="category-news-meta">
-                        <span>CoinDesk</span>
-                        <span>8 分钟前</span>
+                        <span>CryptoSlate</span>
+                        <span>5 min ago</span>
+                    </div>
+                </div>
+                <div class="category-news-item">
+                    <a href="https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank">Here’s what happened in crypto today</a>
+                    <div class="category-news-meta">
+                        <span>CoinTelegraph</span>
+                        <span>5 min ago</span>
                     </div>
                 </div></div>
-        </div></div>
+            </div></div>
             
             <div class="update-info">
-                新闻来源: 金色财经、巴比特、CoinDesk、The Block、Decrypt、CryptoSlate | 最后更新: 2026-03-29 21:45:15
+                Sources: CoinDesk, The Block, Decrypt, CryptoSlate, Bitcoinist, CoinTelegraph | Last update: 2026-03-29 21:52:55
             </div>
         </main>
         
         <aside class="right-sidebar">
             <div class="market-data">
-                <div class="market-title">📊 实时行情</div>
+                <div class="market-title">📊 Live Market</div>
                 <div class="coin-row">
                     <div class="coin-info">
                         <div class="coin-icon" style="background:#f7931a;">₿</div>
@@ -823,11 +869,21 @@
                         <div class="coin-price-change up">+1.23%</div>
                     </div>
                 </div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#6f41d8;">◆</div>
+                        <div><div class="coin-name">Solana</div><div class="coin-symbol">SOL</div></div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$178</div>
+                        <div class="coin-price-change up">+5.67%</div>
+                    </div>
+                </div>
             </div>
             
             <div class="sidebar-card">
                 <div class="card-header">
-                    <h3>🔗 快捷入口</h3>
+                    <h3>🔗 Quick Links</h3>
                 </div>
                 <div class="card-body">
                     <div class="quick-links">
@@ -835,20 +891,22 @@
                         <a href="https://defillama.com" target="_blank" class="quick-link">DeFiLlama</a>
                         <a href="https://dune.com" target="_blank" class="quick-link">Dune</a>
                         <a href="https://etherscan.io" target="_blank" class="quick-link">Etherscan</a>
+                        <a href="https://tradingview.com" target="_blank" class="quick-link">TradingView</a>
+                        <a href="https://coinmarketcap.com" target="_blank" class="quick-link">CMC</a>
                     </div>
                 </div>
             </div>
             
             <div class="sidebar-card">
                 <div class="card-header">
-                    <h3>📺 官方社群</h3>
+                    <h3>📺 Community</h3>
                 </div>
                 <div class="card-body">
                     <div class="quick-links">
                         <a href="#" class="quick-link">Telegram</a>
-                        <a href="#" class="quick-link">Twitter</a>
+                        <a href="#" class="quick-link">Twitter/X</a>
                         <a href="#" class="quick-link">Discord</a>
-                        <a href="#" class="quick-link">微博</a>
+                        <a href="#" class="quick-link">YouTube</a>
                     </div>
                 </div>
             </div>
@@ -858,139 +916,25 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#">关于我们</a>
-                <a href="#">联系方式</a>
-                <a href="#">广告合作</a>
-                <a href="#">免责声明</a>
-                <a href="#">隐私政策</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+                <a href="#">Disclaimer</a>
+                <a href="#">Privacy</a>
             </div>
-            <p class="footer-copy">© 2026 链世界 BlockWorld | 本网站仅提供资讯聚合服务，内容均来自公开RSS源</p>
+            <p class="footer-copy">© 2026 BlockWorld | Your #1 Blockchain News Source<br>News aggregation service. Content from public RSS sources.</p>
         </div>
     </footer>
     
     <script>
-        // Language data
-        const i18n = {
-            zh: {
-                title: "链世界 BlockWorld",
-                subtitle: "区块链资讯第一站",
-                flash_title: "实时快讯",
-                flash_update: "更新于",
-                hot_title: "热门文章",
-                market_title: "实时行情",
-                quick_links: "快捷入口",
-                community: "官方社群",
-                btc: "比特币 Bitcoin",
-                eth: "以太坊 Ethereum",
-                defi: "DeFi 生态",
-                nft: "NFT 与 GameFi",
-                nav_home: "首页",
-                nav_market: "行情",
-                nav_defi: "DeFi",
-                nav_nft: "NFT",
-                nav_web3: "Web3",
-                nav_metaverse: "元宇宙",
-                nav_regulation: "监管",
-                nav_tech: "技术",
-                nav_opinion: "观点",
-                nav_events: "活动",
-                footer_about: "关于我们",
-                footer_contact: "联系方式",
-                footer_ads: "广告合作",
-                footer_disclaimer: "免责声明",
-                footer_privacy: "隐私政策",
-                footer_copy: "本网站仅提供资讯聚合服务，内容均来自公开RSS源",
-                update_info: "新闻来源",
-                last_update: "最后更新",
-                minutes_ago: "分钟前",
-                hours_ago: "小时前",
-            },
-            en: {
-                title: "BlockWorld",
-                subtitle: "Your #1 Blockchain News Hub",
-                flash_title: "Breaking News",
-                flash_update: "Updated",
-                hot_title: "Trending",
-                market_title: "Live Market",
-                quick_links: "Quick Links",
-                community: "Community",
-                btc: "Bitcoin",
-                eth: "Ethereum",
-                defi: "DeFi",
-                nft: "NFT & GameFi",
-                nav_home: "Home",
-                nav_market: "Market",
-                nav_defi: "DeFi",
-                nav_nft: "NFT",
-                nav_web3: "Web3",
-                nav_metaverse: "Metaverse",
-                nav_regulation: "Regulation",
-                nav_tech: "Tech",
-                nav_opinion: "Opinion",
-                nav_events: "Events",
-                footer_about: "About",
-                footer_contact: "Contact",
-                footer_ads: "Advertise",
-                footer_disclaimer: "Disclaimer",
-                footer_privacy: "Privacy",
-                footer_copy: "News aggregation service. Content from public RSS sources.",
-                update_info: "Sources",
-                last_update: "Last update",
-                minutes_ago: "min ago",
-                hours_ago: "hours ago",
-            }
-        };
-        
-        let currentLang = 'zh';
-        
-        function setLang(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            
-            // Update buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === (lang === 'zh' ? '中文' : 'EN'));
-            });
-            
-            const L = i18n[lang];
-            
-            // Update text
-            document.title = L.title + ' - ' + L.subtitle;
-            
-            // Update nav
-            const navItems = document.querySelectorAll('.nav-item');
-            const navTexts = [L.nav_home, L.nav_market, L.nav_defi, L.nav_nft, L.nav_web3, L.nav_metaverse, L.nav_regulation, L.nav_tech, L.nav_opinion, L.nav_events];
-            navItems.forEach((item, i) => item.textContent = navTexts[i]);
-            
-            // Update cards
-            document.querySelector('.flash-header h3').innerHTML = '<span class="flash-dot"></span> ' + L.flash_title;
-            document.querySelectorAll('.card-header h3')[0].textContent = '🔥 ' + L.hot_title;
-            document.querySelector('.market-title').textContent = '📊 ' + L.market_title;
-            document.querySelectorAll('.card-header h3')[1].textContent = '🔗 ' + L.quick_links;
-            document.querySelectorAll('.card-header h3')[2].textContent = '📺 ' + L.community;
-            
-            // Save preference
-            localStorage.setItem('lang', lang);
-        }
-        
-        // Load saved language
-        const savedLang = localStorage.getItem('lang') || 'zh';
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', 
-                (savedLang === 'zh' && btn.textContent === '中文') || 
-                (savedLang === 'en' && btn.textContent === 'EN')
-            );
-        });
-        
-        // Auto refresh
+        // Auto refresh every 5 minutes
         setTimeout(() => { location.reload(); }, 5 * 60 * 1000);
         
-        // Update clock
+        // Update time
         function updateTime() {
             const now = new Date();
-            const timeStr = now.toLocaleTimeString('zh-CN');
             document.querySelector('.flash-header .flash-time').textContent = 
-                (currentLang === 'zh' ? '更新于 ' : 'Updated ') + timeStr;
+                'Updated ' + now.toLocaleTimeString('en-US');
         }
         setInterval(updateTime, 1000);
     </script>
