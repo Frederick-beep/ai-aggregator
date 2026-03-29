@@ -3,555 +3,1025 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechPulse - AI与科技前沿资讯</title>
-    <meta name="description" content="TechPulse - 每小时自动聚合全球最新AI与科技资讯，来自HackerNews、OpenAI、DeepMind、The Verge等顶级媒体">
+    <title>链世界 BlockWorld - 区块链资讯第一站</title>
+    <meta name="description" content="链世界为您提供最新的区块链、比特币、以太坊、DeFi、Web3资讯">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0d;
-            --surface: #161616;
-            --surface2: #1e1e1e;
-            --border: #2a2a2a;
-            --text: #e8e8e8;
-            --text-muted: #888;
-            --accent: #7c6af7;
-            --accent2: #06d6a0;
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #121214;
+            --bg-card: #1a1a1d;
+            --bg-hover: #222226;
+            --border: #2a2a2f;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a8;
+            --text-muted: #6b6b73;
+            --accent: #f7931a; /* 橙色-比特币色 */
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
+            line-height: 1.6;
         }
-
-        /* ── 顶部导航 ── */
-        nav {
+        
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(13,13,13,0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 24px;
-            height: 60px;
+        }
+        
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
-
-        .nav-logo {
-            font-size: 1.3em;
+        
+        .logo {
+            font-size: 1.6em;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-badge {
-            font-size: 0.75em;
-            color: var(--text-muted);
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .nav-badge span {
-            color: var(--accent2);
-            font-weight: 600;
-        }
-
-        /* ── Hero ── */
-        .hero {
-            padding: 60px 24px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.8em;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2em, 5vw, 3.2em);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 em {
-            font-style: normal;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-sub {
-            color: var(--text-muted);
-            font-size: 1.05em;
-            line-height: 1.6;
-            max-width: 560px;
-        }
-
-        /* ── 统计栏 ── */
-        .stats {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 24px;
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 24px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
-
-        .stat-icon { font-size: 1.4em; }
-
-        .stat-num {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--accent);
+        
+        .logo-icon {
+            font-size: 1.2em;
         }
-
-        .stat-label {
-            font-size: 0.8em;
-            color: var(--text-muted);
-        }
-
-        /* ── 分区标题 ── */
-        .section-header {
-            max-width: 1200px;
-            margin: 0 auto 20px;
-            padding: 0 24px;
+        
+        .header-right {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
         }
-
-        .section-header h2 {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* ── 新闻网格 ── */
-        .grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        
+        .price-ticker {
+            display: flex;
             gap: 16px;
+            font-size: 0.85em;
         }
-
-        /* ── 新闻卡片 ── */
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
+        
+        .price-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .price-btc { color: var(--accent); }
+        .price-eth { color: var(--accent-purple); }
+        
+        .price-up { color: var(--accent-green); }
+        .price-down { color: var(--accent-red); }
+        
+        .header-nav {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+        }
+        
+        .nav-list {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 0;
+            list-style: none;
+            overflow-x: auto;
+        }
+        
+        .nav-item {
+            padding: 12px 20px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent);
+        }
+        
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            gap: 20px;
+        }
+        
+        /* Left Sidebar */
+        .left-sidebar {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            position: relative;
+            gap: 16px;
+        }
+        
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             overflow: hidden;
         }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--accent);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .card:hover {
-            border-color: #3a3a3a;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-        }
-
-        .card:hover::before { opacity: 1; }
-
-        .card-tag {
-            display: inline-flex;
+        
+        .card-header {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 4px;
-            font-size: 0.72em;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            width: fit-content;
-            letter-spacing: 0.3px;
         }
-
-        .card-title {
+        
+        .card-header h3 {
             font-size: 0.95em;
             font-weight: 600;
-            line-height: 1.5;
-        }
-
-        .card-title a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .card-title a:hover { color: var(--accent); }
-
-        .card-summary {
-            font-size: 0.85em;
-            color: var(--text-muted);
-            line-height: 1.65;
-            flex: 1;
-        }
-
-        .card-footer {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding-top: 12px;
-            border-top: 1px solid var(--border);
+            gap: 6px;
         }
-
-        .card-source {
+        
+        .card-header .icon {
+            font-size: 1.1em;
+        }
+        
+        .card-body {
+            padding: 12px;
+        }
+        
+        /* Hot News */
+        .hot-list {
+            list-style: none;
+        }
+        
+        .hot-item {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            transition: background 0.2s;
+        }
+        
+        .hot-item:last-child {
+            border-bottom: none;
+        }
+        
+        .hot-item:hover {
+            background: var(--bg-hover);
+        }
+        
+        .hot-num {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.75em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .hot-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85em;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .hot-item a:hover {
+            color: var(--accent);
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* Flash News */
+        .flash-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .flash-header {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(249, 147, 26, 0.1) 0%, transparent 100%);
+        }
+        
+        .flash-header h3 {
+            font-size: 1em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+        }
+        
+        .flash-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .flash-time {
+            font-size: 0.8em;
+            color: var(--text-muted);
+        }
+        
+        .flash-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .flash-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            transition: background 0.2s;
+        }
+        
+        .flash-item:hover {
+            background: var(--bg-hover);
+        }
+        
+        .flash-item:last-child {
+            border-bottom: none;
+        }
+        
+        .flash-item .flash-time {
+            width: 50px;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .flash-item .flash-source {
+            width: 70px;
+            flex-shrink: 0;
+            font-size: 0.8em;
+            color: var(--accent-blue);
+        }
+        
+        .flash-item a {
+            flex: 1;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .flash-item a:hover {
+            color: var(--accent);
+        }
+        
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .category-card-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .category-card-header h4 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .category-tag {
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .category-card-body {
+            padding: 8px;
+        }
+        
+        .category-news-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .category-news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .category-news-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+        
+        .category-news-item a:hover {
+            color: var(--accent);
+        }
+        
+        .category-news-meta {
+            margin-top: 6px;
+            font-size: 0.75em;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* Right Sidebar */
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .market-data {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        
+        .market-title {
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .coin-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .coin-row:last-child {
+            border-bottom: none;
+        }
+        
+        .coin-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .coin-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        
+        .coin-name {
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        .coin-symbol {
             font-size: 0.75em;
             color: var(--text-muted);
         }
-
-        .card-link {
-            font-size: 0.8em;
+        
+        .coin-price {
+            text-align: right;
+        }
+        
+        .coin-price-value {
             font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.95em;
         }
-
-        .card-link:hover { color: var(--accent2); }
-
-        /* ── Footer ── */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 32px 24px;
+        
+        .coin-price-change {
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .coin-price-change.up {
+            color: var(--accent-green);
+        }
+        
+        .coin-price-change.down {
+            color: var(--accent-red);
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .quick-link {
+            background: var(--bg-hover);
+            border-radius: 8px;
+            padding: 12px;
             text-align: center;
-            color: var(--text-muted);
+            text-decoration: none;
+            color: var(--text-primary);
             font-size: 0.85em;
-            line-height: 2;
+            transition: all 0.2s;
         }
-
-        footer strong { color: var(--text); }
-
-        .footer-dot {
-            display: inline-block;
-            width: 6px; height: 6px;
-            background: var(--accent2);
-            border-radius: 50%;
-            margin: 0 8px;
-            vertical-align: middle;
-            animation: pulse 2s infinite;
+        
+        .quick-link:hover {
+            background: var(--accent);
+            color: #000;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 30px 20px;
+            margin-top: 40px;
         }
-
-        /* ── 响应式 ── */
-        @media (max-width: 600px) {
-            .hero { padding: 40px 16px 24px; }
-            .grid { padding: 0 16px 40px; }
-            .stats { padding: 0 16px; }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85em;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.8em;
+        }
+        
+        /* Update Time */
+        .update-info {
+            text-align: center;
+            padding: 12px;
+            color: var(--text-muted);
+            font-size: 0.8em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 1fr 300px;
+            }
+            .left-sidebar {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .right-sidebar {
+                display: none;
+            }
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
         }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-logo">⚡ TechPulse</div>
-        <div class="nav-badge">自动更新 <span>每小时</span></div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-eyebrow">🌐 全球科技资讯聚合</div>
-        <h1>掌握 <em>AI 与科技</em><br>前沿动态</h1>
-        <p class="hero-sub">自动聚合 HackerNews、OpenAI、DeepMind、The Verge 等顶级媒体，每小时更新，不错过任何重要资讯。</p>
-    </section>
-
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-icon">📰</div>
-            <div>
-                <div class="stat-num">20</div>
-                <div class="stat-label">本期文章</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <span class="logo-icon">⛓️</span>
+                链世界 BlockWorld
+            </div>
+            <div class="header-right">
+                <div class="price-ticker">
+                    <div class="price-item price-btc">
+                        <span>₿</span>
+                        <span>BTC</span>
+                        <span class="price-up">$67,234 ↑</span>
+                    </div>
+                    <div class="price-item price-eth">
+                        <span>Ξ</span>
+                        <span>ETH</span>
+                        <span class="price-down">$3,456 ↓</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="stat">
-            <div class="stat-icon">🔗</div>
-            <div>
-                <div class="stat-num">6</div>
-                <div class="stat-label">信息来源</div>
-            </div>
+        <nav class="header-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">首页</li>
+                <li class="nav-item">行情</li>
+                <li class="nav-item">DeFi</li>
+                <li class="nav-item">NFT</li>
+                <li class="nav-item">Web3</li>
+                <li class="nav-item">元宇宙</li>
+                <li class="nav-item">监管</li>
+                <li class="nav-item">技术</li>
+                <li class="nav-item">观点</li>
+                <li class="nav-item">活动</li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-card">
+                <div class="card-header">
+                    <h3><span class="icon">🔥</span> 热门文章</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="hot-list">
+                        
+        <div class="hot-item">
+            <span class="hot-num">1</span>
+            <a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a>
         </div>
-        <div class="stat">
-            <div class="stat-icon">🕐</div>
-            <div>
-                <div class="stat-num">1h</div>
-                <div class="stat-label">更新频率</div>
-            </div>
+        <div class="hot-item">
+            <span class="hot-num">2</span>
+            <a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a>
         </div>
-        <div class="stat">
-            <div class="stat-icon">🤖</div>
-            <div>
-                <div class="stat-num">AI</div>
-                <div class="stat-label">智能驱动</div>
-            </div>
+        <div class="hot-item">
+            <span class="hot-num">3</span>
+            <a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a>
         </div>
+        <div class="hot-item">
+            <span class="hot-num">4</span>
+            <a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a>
+        </div>
+        <div class="hot-item">
+            <span class="hot-num">5</span>
+            <a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a>
+        </div>
+        <div class="hot-item">
+            <span class="hot-num">6</span>
+            <a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a>
+        </div>
+        <div class="hot-item">
+            <span class="hot-num">7</span>
+            <a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a>
+        </div>
+        <div class="hot-item">
+            <span class="hot-num">8</span>
+            <a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a>
+        </div>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Flash News -->
+            <section class="flash-section">
+                <div class="flash-header">
+                    <h3><span class="flash-dot"></span> 实时快讯</h3>
+                    <span class="flash-time">更新于 21:34:39</span>
+                </div>
+                <div class="flash-list">
+                    
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/business/2026/03/28/crypto-s-future-is-bright-in-the-context-of-ai-s-assault-on-software-firms-says-kraken-backed-investment-firm" target="_blank">Crypto's future is bright in the context of AI's assault on software firms, says Kraken-backed investment firm</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">CoinDesk</span>
+            <a href="https://www.coindesk.com/tech/2026/03/28/here-s-what-next-as-anthropic-s-most-powerful-ai-model-leaked-via-unsecured-data-cache" target="_blank">Here's what next as Anthropic's most powerful AI model leaked via unsecured data cache</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395571/world-foundation-subsidiary-sells-65-million-in-wld-tokens-through-otc-deals-as-token-hits-all-time-low?utm_source=rss&utm_medium=rss" target="_blank">World Foundation subsidiary sells $65 million in WLD tokens through OTC deals as token hits all-time low</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395568/morgan-stanley-sets-spot-bitcoin-etf-fee-at-0-14-undercutting-every-rival-on-the-market?utm_source=rss&utm_medium=rss" target="_blank">Morgan Stanley sets spot bitcoin ETF fee at 0.14%, undercutting every rival on the market</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395549/what-the-hell-crypto-frustration-boils-over-as-stablecoin-fight-stalls-bill?utm_source=rss&utm_medium=rss" target="_blank">‘What the hell?’ — Crypto frustration boils over as stablecoin fight stalls bill</a>
+        </div>
+        <div class="flash-item">
+            <span class="flash-time">21:34</span>
+            <span class="flash-source">The Block</span>
+            <a href="https://www.theblock.co/post/395541/miladys-loyalty-pledge-unnecessary-culture-schism-ethereum-community?utm_source=rss&utm_medium=rss" target="_blank">Ethereum Foundation mandate sparks debate over loyalty pledges, Milady-inspired branding</a>
+        </div>
+                </div>
+            </section>
+            
+            <!-- Category Grid -->
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-card-header">
+                        <h4>比特币 Bitcoin</h4>
+                        <span class="category-tag">BTC</span>
+                    </div>
+                    <div class="category-card-body">
+                        <div class="category-news-item">
+                            <a href="#">比特币ETF获批带动机构投资热潮</a>
+                            <div class="category-news-meta">
+                                <span>金色财经</span>
+                                <span>3分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">比特币网络难度创历史新高</a>
+                            <div class="category-news-meta">
+                                <span>巴比特</span>
+                                <span>15分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">萨尔瓦多比特币储备价值突破10亿美元</a>
+                            <div class="category-news-meta">
+                                <span>CoinDesk</span>
+                                <span>30分钟前</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-card-header">
+                        <h4>以太坊 Ethereum</h4>
+                        <span class="category-tag">ETH</span>
+                    </div>
+                    <div class="category-card-body">
+                        <div class="category-news-item">
+                            <a href="#">以太坊Layer2生态持续扩张</a>
+                            <div class="category-news-meta">
+                                <span>The Block</span>
+                                <span>5分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">以太坊基金会公布新研究资助计划</a>
+                            <div class="category-news-meta">
+                                <span>Decrypt</span>
+                                <span>20分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">EIP-4844实施后L2费用大幅下降</a>
+                            <div class="category-news-meta">
+                                <span>CryptoSlate</span>
+                                <span>45分钟前</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-card-header">
+                        <h4>DeFi 生态</h4>
+                        <span class="category-tag">DeFi</span>
+                    </div>
+                    <div class="category-card-body">
+                        <div class="category-news-item">
+                            <a href="#">DeFi总锁仓量突破2000亿美元</a>
+                            <div class="category-news-meta">
+                                <span>金色财经</span>
+                                <span>8分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">Uniswap V4新特性解读</a>
+                            <div class="category-news-meta">
+                                <span>巴比特</span>
+                                <span>25分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">去中心化稳定币赛道竞争加剧</a>
+                            <div class="category-news-meta">
+                                <span>CoinDesk</span>
+                                <span>1小时前</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-card-header">
+                        <h4>NFT 与 GameFi</h4>
+                        <span class="category-tag">NFT</span>
+                    </div>
+                    <div class="category-card-body">
+                        <div class="category-news-item">
+                            <a href="#">Bluechip NFT地板价回暖</a>
+                            <div class="category-news-meta">
+                                <span>Decrypt</span>
+                                <span>10分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">Web3游戏投资持续升温</a>
+                            <div class="category-news-meta">
+                                <span>金色财经</span>
+                                <span>35分钟前</span>
+                            </div>
+                        </div>
+                        <div class="category-news-item">
+                            <a href="#">各大品牌持续布局NFT元宇宙</a>
+                            <div class="category-news-meta">
+                                <span>CryptoSlate</span>
+                                <span>50分钟前</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="update-info">
+                新闻来源：金色财经、巴比特、CoinDesk、The Block、Decrypt、CryptoSlate | 最后更新：2026-03-29 21:34:39
+            </div>
+        </main>
+        
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="market-data">
+                <div class="market-title">📊 实时行情</div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#f7931a;">₿</div>
+                        <div>
+                            <div class="coin-name">Bitcoin</div>
+                            <div class="coin-symbol">BTC</div>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$67,234</div>
+                        <div class="coin-price-change up">+2.34%</div>
+                    </div>
+                </div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#627eea;">Ξ</div>
+                        <div>
+                            <div class="coin-name">Ethereum</div>
+                            <div class="coin-symbol">ETH</div>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$3,456</div>
+                        <div class="coin-price-change down">-0.56%</div>
+                    </div>
+                </div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#26a17b;">₮</div>
+                        <div>
+                            <div class="coin-name">Tether</div>
+                            <div class="coin-symbol">USDT</div>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$1.00</div>
+                        <div class="coin-price-change up">+0.01%</div>
+                    </div>
+                </div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#2775ca;">🔵</div>
+                        <div>
+                            <div class="coin-name">USD Coin</div>
+                            <div class="coin-symbol">USDC</div>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$1.00</div>
+                        <div class="coin-price-change down">-0.01%</div>
+                    </div>
+                </div>
+                <div class="coin-row">
+                    <div class="coin-info">
+                        <div class="coin-icon" style="background:#e84142;">◎</div>
+                        <div>
+                            <div class="coin-name">BNB</div>
+                            <div class="coin-symbol">BNB</div>
+                        </div>
+                    </div>
+                    <div class="coin-price">
+                        <div class="coin-price-value">$598</div>
+                        <div class="coin-price-change up">+1.23%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <div class="card-header">
+                    <h3><span class="icon">🔗</span> 快捷入口</h3>
+                </div>
+                <div class="card-body">
+                    <div class="quick-links">
+                        <a href="https://www.coingecko.com" target="_blank" class="quick-link">CoinGecko</a>
+                        <a href="https://defillama.com" target="_blank" class="quick-link">DeFiLlama</a>
+                        <a href="https://dune.com" target="_blank" class="quick-link">Dune</a>
+                        <a href="https://etherscan.io" target="_blank" class="quick-link">Etherscan</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <div class="card-header">
+                    <h3><span class="icon">📺</span> 官方社群</h3>
+                </div>
+                <div class="card-body">
+                    <div class="quick-links">
+                        <a href="#" class="quick-link">Telegram</a>
+                        <a href="#" class="quick-link">Twitter</a>
+                        <a href="#" class="quick-link">Discord</a>
+                        <a href="#" class="quick-link">微博</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
     </div>
-
-    <div class="section-header">
-        <h2>最新资讯</h2>
-        <div class="section-line"></div>
-        <span style="font-size:0.8em; color: #888">更新于 2026年03月29日 16:34</span>
-    </div>
-
-    <main class="grid">
-
-        <article class="card" style="--accent: #ff6600">
-            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
-            <h3 class="card-title"><a href="https://sytse.com/cancer/" target="_blank" rel="noopener">Founder of GitLab battles cancer by founding companies</a></h3>
-            <p class="card-summary">点击阅读全文了解详情...</p>
-            <div class="card-footer">
-                <span class="card-source">Hacker News</span>
-                <a href="https://sytse.com/cancer/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系方式</a>
+                <a href="#">广告合作</a>
+                <a href="#">免责声明</a>
+                <a href="#">隐私政策</a>
             </div>
-        </article>
-
-        <article class="card" style="--accent: #ff6600">
-            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
-            <h3 class="card-title"><a href="https://blog.literarily-starved.com/2026/02/technology-the-nearly-perfect-usb-cable-tester-does-exist/" target="_blank" rel="noopener">Technology: The (nearly) perfect USB cable tester does exist</a></h3>
-            <p class="card-summary">点击阅读全文了解详情...</p>
-            <div class="card-footer">
-                <span class="card-source">Hacker News</span>
-                <a href="https://blog.literarily-starved.com/2026/02/technology-the-nearly-perfect-usb-cable-tester-does-exist/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #ff6600">
-            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
-            <h3 class="card-title"><a href="https://nielsleenheer.com/articles/2026/css-is-doomed-rendering-doom-in-3d-with-css/" target="_blank" rel="noopener">CSS is DOOMed</a></h3>
-            <p class="card-summary">点击阅读全文了解详情...</p>
-            <div class="card-footer">
-                <span class="card-source">Hacker News</span>
-                <a href="https://nielsleenheer.com/articles/2026/css-is-doomed-rendering-doom-in-3d-with-css/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #ff6600">
-            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
-            <h3 class="card-title"><a href="https://www.rac.co.uk/drive/electric-cars/choosing/road-to-electric/" target="_blank" rel="noopener">The road to electric – in charts and data [UK]</a></h3>
-            <p class="card-summary">点击阅读全文了解详情...</p>
-            <div class="card-footer">
-                <span class="card-source">Hacker News</span>
-                <a href="https://www.rac.co.uk/drive/electric-cars/choosing/road-to-electric/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #ff6600">
-            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
-            <h3 class="card-title"><a href="https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research" target="_blank" rel="noopener">AI overly affirms users asking for personal advice</a></h3>
-            <p class="card-summary">点击阅读全文了解详情...</p>
-            <div class="card-footer">
-                <span class="card-source">Hacker News</span>
-                <a href="https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #e5007d">
-            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
-            <h3 class="card-title"><a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank" rel="noopener">Suno leans into customization with v5.5</a></h3>
-            <p class="card-summary">Suno just released one of its biggest updates yet with v5.5 of its AI music model. Where previous updates focused mostly...</p>
-            <div class="card-footer">
-                <span class="card-source">The Verge</span>
-                <a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #e5007d">
-            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
-            <h3 class="card-title"><a href="https://www.theverge.com/gadgets/899580/best-amazon-big-spring-sale-2026-deals" target="_blank" rel="noopener">The best deals we’ve found from Amazon’s Big Spring Sale (so far)</a></h3>
-            <p class="card-summary">Amazon loves to manufacture an event. March is historically a dry spell for deals; however, with Amazon’s third annual B...</p>
-            <div class="card-footer">
-                <span class="card-source">The Verge</span>
-                <a href="https://www.theverge.com/gadgets/899580/best-amazon-big-spring-sale-2026-deals" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #e5007d">
-            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
-            <h3 class="card-title"><a href="https://www.theverge.com/gadgets/902643/steelseries-arctis-nova-pro-wireless-pc-ps5-xbox-headset-gaming-amazon-big-spring-sale-2026-deal" target="_blank" rel="noopener">SteelSeries’ feature-packed Nova Pro Wireless headset is $80 off</a></h3>
-            <p class="card-summary">The SteelSeries Arctis Nova Pro Wireless came out almost four years ago, yet it’s still one of the best gaming headsets ...</p>
-            <div class="card-footer">
-                <span class="card-source">The Verge</span>
-                <a href="https://www.theverge.com/gadgets/902643/steelseries-arctis-nova-pro-wireless-pc-ps5-xbox-headset-gaming-amazon-big-spring-sale-2026-deal" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #e5007d">
-            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
-            <h3 class="card-title"><a href="https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure" target="_blank" rel="noopener">Why can’t TikTok identify AI generated ads when I can?</a></h3>
-            <p class="card-summary">I've been struggling to tell whether the ads appearing in my TikTok feeds have been made with generative AI tools. As so...</p>
-            <div class="card-footer">
-                <span class="card-source">The Verge</span>
-                <a href="https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #e5007d">
-            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
-            <h3 class="card-title"><a href="https://www.theverge.com/policy/903006/meta-new-mexico-los-angeles-child-safety-trial-impact" target="_blank" rel="noopener">Meta’s legal defeat could be a victory for children, or a loss for everyone</a></h3>
-            <p class="card-summary">Is social media not just bad, but illegally bad? Should tech companies pay for making it that way? According to two US j...</p>
-            <div class="card-footer">
-                <span class="card-source">The Verge</span>
-                <a href="https://www.theverge.com/policy/903006/meta-new-mexico-los-angeles-child-safety-trial-impact" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #10a37f">
-            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
-            <h3 class="card-title"><a href="https://openai.com/index/stadler" target="_blank" rel="noopener">STADLER reshapes knowledge work at a 230-year-old company</a></h3>
-            <p class="card-summary">Learn how STADLER uses ChatGPT to transform knowledge work, saving time and accelerating productivity across 650 employe...</p>
-            <div class="card-footer">
-                <span class="card-source">OpenAI News</span>
-                <a href="https://openai.com/index/stadler" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #10a37f">
-            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
-            <h3 class="card-title"><a href="https://openai.com/index/our-approach-to-the-model-spec" target="_blank" rel="noopener">Inside our approach to the Model Spec</a></h3>
-            <p class="card-summary">Learn how OpenAI’s Model Spec serves as a public framework for model behavior, balancing safety, user freedom, and accou...</p>
-            <div class="card-footer">
-                <span class="card-source">OpenAI News</span>
-                <a href="https://openai.com/index/our-approach-to-the-model-spec" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #10a37f">
-            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
-            <h3 class="card-title"><a href="https://openai.com/index/safety-bug-bounty" target="_blank" rel="noopener">Introducing the OpenAI Safety Bug Bounty program</a></h3>
-            <p class="card-summary">OpenAI launches a Safety Bug Bounty program to identify AI abuse and safety risks, including agentic vulnerabilities, pr...</p>
-            <div class="card-footer">
-                <span class="card-source">OpenAI News</span>
-                <a href="https://openai.com/index/safety-bug-bounty" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #10a37f">
-            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
-            <h3 class="card-title"><a href="https://openai.com/index/teen-safety-policies-gpt-oss-safeguard" target="_blank" rel="noopener">Helping developers build safer AI experiences for teens</a></h3>
-            <p class="card-summary">OpenAI releases prompt-based teen safety policies for developers using gpt-oss-safeguard, helping moderate age-specific ...</p>
-            <div class="card-footer">
-                <span class="card-source">OpenAI News</span>
-                <a href="https://openai.com/index/teen-safety-policies-gpt-oss-safeguard" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #10a37f">
-            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
-            <h3 class="card-title"><a href="https://openai.com/index/powering-product-discovery-in-chatgpt" target="_blank" rel="noopener">Powering product discovery in ChatGPT</a></h3>
-            <p class="card-summary">ChatGPT introduces richer, visually immersive shopping powered by the Agentic Commerce Protocol, enabling product discov...</p>
-            <div class="card-footer">
-                <span class="card-source">OpenAI News</span>
-                <a href="https://openai.com/index/powering-product-discovery-in-chatgpt" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #4285f4">
-            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
-            <h3 class="card-title"><a href="https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/" target="_blank" rel="noopener">Gemini 3.1 Flash Live: Making audio AI more natural and reliable</a></h3>
-            <p class="card-summary">Our latest voice model has improved precision and lower latency to make voice interactions more fluid, natural and preci...</p>
-            <div class="card-footer">
-                <span class="card-source">Google DeepMind News</span>
-                <a href="https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #4285f4">
-            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
-            <h3 class="card-title"><a href="https://deepmind.google/blog/protecting-people-from-harmful-manipulation/" target="_blank" rel="noopener">Protecting people from harmful manipulation</a></h3>
-            <p class="card-summary">Google DeepMind researches AI's harmful manipulation risks across areas like finance and health, leading to new safety m...</p>
-            <div class="card-footer">
-                <span class="card-source">Google DeepMind News</span>
-                <a href="https://deepmind.google/blog/protecting-people-from-harmful-manipulation/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #4285f4">
-            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
-            <h3 class="card-title"><a href="https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/" target="_blank" rel="noopener">Lyria 3 Pro: Create longer tracks in more</a></h3>
-            <p class="card-summary">Introducing Lyria 3 Pro, which unlocks longer tracks with structural awareness. We’re also bringing Lyria to more Google...</p>
-            <div class="card-footer">
-                <span class="card-source">Google DeepMind News</span>
-                <a href="https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #4285f4">
-            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
-            <h3 class="card-title"><a href="https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/" target="_blank" rel="noopener">Measuring progress toward AGI: A cognitive framework</a></h3>
-            <p class="card-summary">We’re introducing a framework to measure progress toward AGI, and launching a Kaggle hackathon to build the relevant eva...</p>
-            <div class="card-footer">
-                <span class="card-source">Google DeepMind News</span>
-                <a href="https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-
-        <article class="card" style="--accent: #4285f4">
-            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
-            <h3 class="card-title"><a href="https://deepmind.google/blog/10-years-of-alphago/" target="_blank" rel="noopener">From games to biology and beyond: 10 years of AlphaGo’s impact</a></h3>
-            <p class="card-summary">Ten years since AlphaGo, we explore how it is catalyzing scientific discovery and paving a path to AGI.</p>
-            <div class="card-footer">
-                <span class="card-source">Google DeepMind News</span>
-                <a href="https://deepmind.google/blog/10-years-of-alphago/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div><span class="footer-dot"></span> 系统运行中，每小时自动更新</div>
-        <div>数据来源：Hacker News · The Verge · OpenAI · DeepMind · TechCrunch · ArXiv</div>
-        <div style="margin-top:8px"><strong>TechPulse</strong> · AI驱动的科技资讯聚合平台 · © 2026</div>
+            <p class="footer-copy">
+                © 2026 链世界 BlockWorld | 让读懂区块链更简单<br>
+                本网站仅提供资讯聚合服务，内容均来自公开RSS源
+            </p>
+        </div>
     </footer>
-
+    
+    <!-- Auto-refresh script -->
+    <script>
+        // 每5分钟自动刷新快讯
+        setTimeout(() => {
+            location.reload();
+        }, 5 * 60 * 1000);
+        
+        // 实时时钟
+        function updateTime() {
+            const now = new Date();
+            document.querySelector('.flash-header .flash-time').textContent = 
+                '更新于 ' + now.toLocaleTimeString('zh-CN');
+        }
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
