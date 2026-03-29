@@ -1,162 +1,557 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI News Agent - 自动化新闻资讯站</title>
+    <title>TechPulse - AI与科技前沿资讯</title>
+    <meta name="description" content="TechPulse - 每小时自动聚合全球最新AI与科技资讯，来自HackerNews、OpenAI、DeepMind、The Verge等顶级媒体">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0d0d0d;
+            --surface: #161616;
+            --surface2: #1e1e1e;
+            --border: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #888;
+            --accent: #7c6af7;
+            --accent2: #06d6a0;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header p { font-size: 1.1em; opacity: 0.9; }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .news-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .news-card:hover { transform: translateY(-5px); }
-        .news-card h3 { color: #667eea; margin-bottom: 10px; font-size: 1.1em; }
-        .news-card .source { color: #999; font-size: 0.9em; margin-bottom: 10px; }
-        .news-card p { color: #666; line-height: 1.6; margin-bottom: 10px; }
-        .news-card a { color: #667eea; text-decoration: none; }
-        .news-card a:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 20px; color: #999; margin-top: 40px; border-top: 1px solid #ddd; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── 顶部导航 ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13,13,13,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.3em;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-badge {
+            font-size: 0.75em;
+            color: var(--text-muted);
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .nav-badge span {
+            color: var(--accent2);
+            font-weight: 600;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 60px 24px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2em, 5vw, 3.2em);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            color: var(--text-muted);
+            font-size: 1.05em;
+            line-height: 1.6;
+            max-width: 560px;
+        }
+
+        /* ── 统计栏 ── */
+        .stats {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon { font-size: 1.4em; }
+
+        .stat-num {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: var(--text-muted);
+        }
+
+        /* ── 分区标题 ── */
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── 新闻网格 ── */
+        .grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        /* ── 新闻卡片 ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .card:hover {
+            border-color: #3a3a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72em;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            width: fit-content;
+            letter-spacing: 0.3px;
+        }
+
+        .card-title {
+            font-size: 0.95em;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .card-title a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-title a:hover { color: var(--accent); }
+
+        .card-summary {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-source {
+            font-size: 0.75em;
+            color: var(--text-muted);
+        }
+
+        .card-link {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-link:hover { color: var(--accent2); }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85em;
+            line-height: 2;
+        }
+
+        footer strong { color: var(--text); }
+
+        .footer-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: var(--accent2);
+            border-radius: 50%;
+            margin: 0 8px;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 600px) {
+            .hero { padding: 40px 16px 24px; }
+            .grid { padding: 0 16px 40px; }
+            .stats { padding: 0 16px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🤖 AI News Agent</h1>
-            <p>自动化新闻资讯站 - 每小时自动更新最新AI和科技新闻</p>
-        </header>
-        
-        <div class="news-grid">
-        <div class="news-card">
-            <h3>Founder of GitLab battles cancer by founding companies</h3>
-            <div class="source">来源: Hacker News</div>
-            <p><a href="https://news.ycombinator.com/item?id=47556729">Comments</a></p>
-            <a href="https://sytse.com/cancer/" target="_blank">阅读全文 →</a>
+
+    <nav>
+        <div class="nav-logo">⚡ TechPulse</div>
+        <div class="nav-badge">自动更新 <span>每小时</span></div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-eyebrow">🌐 全球科技资讯聚合</div>
+        <h1>掌握 <em>AI 与科技</em><br>前沿动态</h1>
+        <p class="hero-sub">自动聚合 HackerNews、OpenAI、DeepMind、The Verge 等顶级媒体，每小时更新，不错过任何重要资讯。</p>
+    </section>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-icon">📰</div>
+            <div>
+                <div class="stat-num">20</div>
+                <div class="stat-label">本期文章</div>
+            </div>
         </div>
-        <div class="news-card">
-            <h3>Linux is an interpreter</h3>
-            <div class="source">来源: Hacker News</div>
-            <p><a href="https://news.ycombinator.com/item?id=47556359">Comments</a></p>
-            <a href="https://astrid.tech/2026/03/28/0/linux-is-an-interpreter/" target="_blank">阅读全文 →</a>
+        <div class="stat">
+            <div class="stat-icon">🔗</div>
+            <div>
+                <div class="stat-num">6</div>
+                <div class="stat-label">信息来源</div>
+            </div>
         </div>
-        <div class="news-card">
-            <h3>Further human + AI + proof assistant work on Knuth's "Claude Cycles" problem</h3>
-            <div class="source">来源: Hacker News</div>
-            <p><a href="https://news.ycombinator.com/item?id=47557166">Comments</a></p>
-            <a href="https://twitter.com/BoWang87/status/2037648937453232504" target="_blank">阅读全文 →</a>
+        <div class="stat">
+            <div class="stat-icon">🕐</div>
+            <div>
+                <div class="stat-num">1h</div>
+                <div class="stat-label">更新频率</div>
+            </div>
         </div>
-        <div class="news-card">
-            <h3>AI overly affirms users asking for personal advice</h3>
-            <div class="source">来源: Hacker News</div>
-            <p><a href="https://news.ycombinator.com/item?id=47554773">Comments</a></p>
-            <a href="https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research" target="_blank">阅读全文 →</a>
+        <div class="stat">
+            <div class="stat-icon">🤖</div>
+            <div>
+                <div class="stat-num">AI</div>
+                <div class="stat-label">智能驱动</div>
+            </div>
         </div>
-        <div class="news-card">
-            <h3>I Built an Open-World Engine for the N64 [video]</h3>
-            <div class="source">来源: Hacker News</div>
-            <p><a href="https://news.ycombinator.com/item?id=47553717">Comments</a></p>
-            <a href="https://www.youtube.com/watch?v=lXxmIw9axWw" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Suno leans into customization with v5.5</h3>
-            <div class="source">来源: The Verge</div>
-            <p>Suno just released one of its biggest updates yet with v5.5 of its AI music model. Where previous updates focused mostly on improving fidelity and creating more natural vocals, v5.5 is about giving us</p>
-            <a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>The best deals we’ve found from Amazon’s Big Spring Sale (so far)</h3>
-            <div class="source">来源: The Verge</div>
-            <p>Amazon loves to manufacture an event. March is historically a dry spell for deals; however, with Amazon’s third annual Big Spring Sale, which runs through March 31st, the retail behemoth is hoping to </p>
-            <a href="https://www.theverge.com/gadgets/899580/best-amazon-big-spring-sale-2026-deals" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>SteelSeries’ feature-packed Nova Pro Wireless headset is $80 off</h3>
-            <div class="source">来源: The Verge</div>
-            <p>The SteelSeries Arctis Nova Pro Wireless came out almost four years ago, yet it’s still one of the best gaming headsets you can buy. Turns out, it’s not easy for other companies to duplicate all that </p>
-            <a href="https://www.theverge.com/gadgets/902643/steelseries-arctis-nova-pro-wireless-pc-ps5-xbox-headset-gaming-amazon-big-spring-sale-2026-deal" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Why can’t TikTok identify AI generated ads when I can?</h3>
-            <div class="source">来源: The Verge</div>
-            <p>I've been struggling to tell whether the ads appearing in my TikTok feeds have been made with generative AI tools. As someone who spends a great deal of time scrutinizing images and videos for the usu</p>
-            <a href="https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Meta’s legal defeat could be a victory for children, or a loss for everyone</h3>
-            <div class="source">来源: The Verge</div>
-            <p>Is social media not just bad, but illegally bad? Should tech companies pay for making it that way? According to two US juries - and no shortage of outside commentary - the answer to both questions is </p>
-            <a href="https://www.theverge.com/policy/903006/meta-new-mexico-los-angeles-child-safety-trial-impact" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>STADLER reshapes knowledge work at a 230-year-old company</h3>
-            <div class="source">来源: OpenAI News</div>
-            <p>Learn how STADLER uses ChatGPT to transform knowledge work, saving time and accelerating productivity across 650 employees.</p>
-            <a href="https://openai.com/index/stadler" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Inside our approach to the Model Spec</h3>
-            <div class="source">来源: OpenAI News</div>
-            <p>Learn how OpenAI’s Model Spec serves as a public framework for model behavior, balancing safety, user freedom, and accountability as AI systems advance.</p>
-            <a href="https://openai.com/index/our-approach-to-the-model-spec" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Introducing the OpenAI Safety Bug Bounty program</h3>
-            <div class="source">来源: OpenAI News</div>
-            <p>OpenAI launches a Safety Bug Bounty program to identify AI abuse and safety risks, including agentic vulnerabilities, prompt injection, and data exfiltration.</p>
-            <a href="https://openai.com/index/safety-bug-bounty" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Helping developers build safer AI experiences for teens</h3>
-            <div class="source">来源: OpenAI News</div>
-            <p>OpenAI releases prompt-based teen safety policies for developers using gpt-oss-safeguard, helping moderate age-specific risks in AI systems.</p>
-            <a href="https://openai.com/index/teen-safety-policies-gpt-oss-safeguard" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Powering product discovery in ChatGPT</h3>
-            <div class="source">来源: OpenAI News</div>
-            <p>ChatGPT introduces richer, visually immersive shopping powered by the Agentic Commerce Protocol, enabling product discovery, side-by-side comparisons, and merchant integration.</p>
-            <a href="https://openai.com/index/powering-product-discovery-in-chatgpt" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Gemini 3.1 Flash Live: Making audio AI more natural and reliable</h3>
-            <div class="source">来源: Google DeepMind News</div>
-            <p>Our latest voice model has improved precision and lower latency to make voice interactions more fluid, natural and precise.</p>
-            <a href="https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Protecting people from harmful manipulation</h3>
-            <div class="source">来源: Google DeepMind News</div>
-            <p>Google DeepMind researches AI's harmful manipulation risks across areas like finance and health, leading to new safety measures.</p>
-            <a href="https://deepmind.google/blog/protecting-people-from-harmful-manipulation/" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Lyria 3 Pro: Create longer tracks in more</h3>
-            <div class="source">来源: Google DeepMind News</div>
-            <p>Introducing Lyria 3 Pro, which unlocks longer tracks with structural awareness. We’re also bringing Lyria to more Google products and surfaces.</p>
-            <a href="https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>Measuring progress toward AGI: A cognitive framework</h3>
-            <div class="source">来源: Google DeepMind News</div>
-            <p>We’re introducing a framework to measure progress toward AGI, and launching a Kaggle hackathon to build the relevant evaluations.</p>
-            <a href="https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/" target="_blank">阅读全文 →</a>
-        </div>
-        <div class="news-card">
-            <h3>From games to biology and beyond: 10 years of AlphaGo’s impact</h3>
-            <div class="source">来源: Google DeepMind News</div>
-            <p>Ten years since AlphaGo, we explore how it is catalyzing scientific discovery and paving a path to AGI.</p>
-            <a href="https://deepmind.google/blog/10-years-of-alphago/" target="_blank">阅读全文 →</a>
-        </div>
-        </div>
-        
-        <footer>
-            <p>AI News Agent - 自动化新闻资讯站</p>
-            <p>最后更新: 2026-03-29 03:16:42</p>
-            <p>© 2026 All rights reserved</p>
-        </footer>
     </div>
+
+    <div class="section-header">
+        <h2>最新资讯</h2>
+        <div class="section-line"></div>
+        <span style="font-size:0.8em; color: #888">更新于 2026年03月29日 16:34</span>
+    </div>
+
+    <main class="grid">
+
+        <article class="card" style="--accent: #ff6600">
+            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
+            <h3 class="card-title"><a href="https://sytse.com/cancer/" target="_blank" rel="noopener">Founder of GitLab battles cancer by founding companies</a></h3>
+            <p class="card-summary">点击阅读全文了解详情...</p>
+            <div class="card-footer">
+                <span class="card-source">Hacker News</span>
+                <a href="https://sytse.com/cancer/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #ff6600">
+            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
+            <h3 class="card-title"><a href="https://blog.literarily-starved.com/2026/02/technology-the-nearly-perfect-usb-cable-tester-does-exist/" target="_blank" rel="noopener">Technology: The (nearly) perfect USB cable tester does exist</a></h3>
+            <p class="card-summary">点击阅读全文了解详情...</p>
+            <div class="card-footer">
+                <span class="card-source">Hacker News</span>
+                <a href="https://blog.literarily-starved.com/2026/02/technology-the-nearly-perfect-usb-cable-tester-does-exist/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #ff6600">
+            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
+            <h3 class="card-title"><a href="https://nielsleenheer.com/articles/2026/css-is-doomed-rendering-doom-in-3d-with-css/" target="_blank" rel="noopener">CSS is DOOMed</a></h3>
+            <p class="card-summary">点击阅读全文了解详情...</p>
+            <div class="card-footer">
+                <span class="card-source">Hacker News</span>
+                <a href="https://nielsleenheer.com/articles/2026/css-is-doomed-rendering-doom-in-3d-with-css/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #ff6600">
+            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
+            <h3 class="card-title"><a href="https://www.rac.co.uk/drive/electric-cars/choosing/road-to-electric/" target="_blank" rel="noopener">The road to electric – in charts and data [UK]</a></h3>
+            <p class="card-summary">点击阅读全文了解详情...</p>
+            <div class="card-footer">
+                <span class="card-source">Hacker News</span>
+                <a href="https://www.rac.co.uk/drive/electric-cars/choosing/road-to-electric/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #ff6600">
+            <div class="card-tag" style="background: #ff660020; color: #ff6600">🔥 HN</div>
+            <h3 class="card-title"><a href="https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research" target="_blank" rel="noopener">AI overly affirms users asking for personal advice</a></h3>
+            <p class="card-summary">点击阅读全文了解详情...</p>
+            <div class="card-footer">
+                <span class="card-source">Hacker News</span>
+                <a href="https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #e5007d">
+            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
+            <h3 class="card-title"><a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank" rel="noopener">Suno leans into customization with v5.5</a></h3>
+            <p class="card-summary">Suno just released one of its biggest updates yet with v5.5 of its AI music model. Where previous updates focused mostly...</p>
+            <div class="card-footer">
+                <span class="card-source">The Verge</span>
+                <a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #e5007d">
+            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
+            <h3 class="card-title"><a href="https://www.theverge.com/gadgets/899580/best-amazon-big-spring-sale-2026-deals" target="_blank" rel="noopener">The best deals we’ve found from Amazon’s Big Spring Sale (so far)</a></h3>
+            <p class="card-summary">Amazon loves to manufacture an event. March is historically a dry spell for deals; however, with Amazon’s third annual B...</p>
+            <div class="card-footer">
+                <span class="card-source">The Verge</span>
+                <a href="https://www.theverge.com/gadgets/899580/best-amazon-big-spring-sale-2026-deals" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #e5007d">
+            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
+            <h3 class="card-title"><a href="https://www.theverge.com/gadgets/902643/steelseries-arctis-nova-pro-wireless-pc-ps5-xbox-headset-gaming-amazon-big-spring-sale-2026-deal" target="_blank" rel="noopener">SteelSeries’ feature-packed Nova Pro Wireless headset is $80 off</a></h3>
+            <p class="card-summary">The SteelSeries Arctis Nova Pro Wireless came out almost four years ago, yet it’s still one of the best gaming headsets ...</p>
+            <div class="card-footer">
+                <span class="card-source">The Verge</span>
+                <a href="https://www.theverge.com/gadgets/902643/steelseries-arctis-nova-pro-wireless-pc-ps5-xbox-headset-gaming-amazon-big-spring-sale-2026-deal" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #e5007d">
+            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
+            <h3 class="card-title"><a href="https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure" target="_blank" rel="noopener">Why can’t TikTok identify AI generated ads when I can?</a></h3>
+            <p class="card-summary">I've been struggling to tell whether the ads appearing in my TikTok feeds have been made with generative AI tools. As so...</p>
+            <div class="card-footer">
+                <span class="card-source">The Verge</span>
+                <a href="https://www.theverge.com/ai-artificial-intelligence/900400/tiktok-ai-ads-labels-samsung-disclosure" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #e5007d">
+            <div class="card-tag" style="background: #e5007d20; color: #e5007d">⚡ 科技</div>
+            <h3 class="card-title"><a href="https://www.theverge.com/policy/903006/meta-new-mexico-los-angeles-child-safety-trial-impact" target="_blank" rel="noopener">Meta’s legal defeat could be a victory for children, or a loss for everyone</a></h3>
+            <p class="card-summary">Is social media not just bad, but illegally bad? Should tech companies pay for making it that way? According to two US j...</p>
+            <div class="card-footer">
+                <span class="card-source">The Verge</span>
+                <a href="https://www.theverge.com/policy/903006/meta-new-mexico-los-angeles-child-safety-trial-impact" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #10a37f">
+            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
+            <h3 class="card-title"><a href="https://openai.com/index/stadler" target="_blank" rel="noopener">STADLER reshapes knowledge work at a 230-year-old company</a></h3>
+            <p class="card-summary">Learn how STADLER uses ChatGPT to transform knowledge work, saving time and accelerating productivity across 650 employe...</p>
+            <div class="card-footer">
+                <span class="card-source">OpenAI News</span>
+                <a href="https://openai.com/index/stadler" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #10a37f">
+            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
+            <h3 class="card-title"><a href="https://openai.com/index/our-approach-to-the-model-spec" target="_blank" rel="noopener">Inside our approach to the Model Spec</a></h3>
+            <p class="card-summary">Learn how OpenAI’s Model Spec serves as a public framework for model behavior, balancing safety, user freedom, and accou...</p>
+            <div class="card-footer">
+                <span class="card-source">OpenAI News</span>
+                <a href="https://openai.com/index/our-approach-to-the-model-spec" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #10a37f">
+            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
+            <h3 class="card-title"><a href="https://openai.com/index/safety-bug-bounty" target="_blank" rel="noopener">Introducing the OpenAI Safety Bug Bounty program</a></h3>
+            <p class="card-summary">OpenAI launches a Safety Bug Bounty program to identify AI abuse and safety risks, including agentic vulnerabilities, pr...</p>
+            <div class="card-footer">
+                <span class="card-source">OpenAI News</span>
+                <a href="https://openai.com/index/safety-bug-bounty" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #10a37f">
+            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
+            <h3 class="card-title"><a href="https://openai.com/index/teen-safety-policies-gpt-oss-safeguard" target="_blank" rel="noopener">Helping developers build safer AI experiences for teens</a></h3>
+            <p class="card-summary">OpenAI releases prompt-based teen safety policies for developers using gpt-oss-safeguard, helping moderate age-specific ...</p>
+            <div class="card-footer">
+                <span class="card-source">OpenAI News</span>
+                <a href="https://openai.com/index/teen-safety-policies-gpt-oss-safeguard" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #10a37f">
+            <div class="card-tag" style="background: #10a37f20; color: #10a37f">🤖 AI</div>
+            <h3 class="card-title"><a href="https://openai.com/index/powering-product-discovery-in-chatgpt" target="_blank" rel="noopener">Powering product discovery in ChatGPT</a></h3>
+            <p class="card-summary">ChatGPT introduces richer, visually immersive shopping powered by the Agentic Commerce Protocol, enabling product discov...</p>
+            <div class="card-footer">
+                <span class="card-source">OpenAI News</span>
+                <a href="https://openai.com/index/powering-product-discovery-in-chatgpt" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #4285f4">
+            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
+            <h3 class="card-title"><a href="https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/" target="_blank" rel="noopener">Gemini 3.1 Flash Live: Making audio AI more natural and reliable</a></h3>
+            <p class="card-summary">Our latest voice model has improved precision and lower latency to make voice interactions more fluid, natural and preci...</p>
+            <div class="card-footer">
+                <span class="card-source">Google DeepMind News</span>
+                <a href="https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #4285f4">
+            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
+            <h3 class="card-title"><a href="https://deepmind.google/blog/protecting-people-from-harmful-manipulation/" target="_blank" rel="noopener">Protecting people from harmful manipulation</a></h3>
+            <p class="card-summary">Google DeepMind researches AI's harmful manipulation risks across areas like finance and health, leading to new safety m...</p>
+            <div class="card-footer">
+                <span class="card-source">Google DeepMind News</span>
+                <a href="https://deepmind.google/blog/protecting-people-from-harmful-manipulation/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #4285f4">
+            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
+            <h3 class="card-title"><a href="https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/" target="_blank" rel="noopener">Lyria 3 Pro: Create longer tracks in more</a></h3>
+            <p class="card-summary">Introducing Lyria 3 Pro, which unlocks longer tracks with structural awareness. We’re also bringing Lyria to more Google...</p>
+            <div class="card-footer">
+                <span class="card-source">Google DeepMind News</span>
+                <a href="https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #4285f4">
+            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
+            <h3 class="card-title"><a href="https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/" target="_blank" rel="noopener">Measuring progress toward AGI: A cognitive framework</a></h3>
+            <p class="card-summary">We’re introducing a framework to measure progress toward AGI, and launching a Kaggle hackathon to build the relevant eva...</p>
+            <div class="card-footer">
+                <span class="card-source">Google DeepMind News</span>
+                <a href="https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+
+        <article class="card" style="--accent: #4285f4">
+            <div class="card-tag" style="background: #4285f420; color: #4285f4">🧠 AI</div>
+            <h3 class="card-title"><a href="https://deepmind.google/blog/10-years-of-alphago/" target="_blank" rel="noopener">From games to biology and beyond: 10 years of AlphaGo’s impact</a></h3>
+            <p class="card-summary">Ten years since AlphaGo, we explore how it is catalyzing scientific discovery and paving a path to AGI.</p>
+            <div class="card-footer">
+                <span class="card-source">Google DeepMind News</span>
+                <a href="https://deepmind.google/blog/10-years-of-alphago/" target="_blank" rel="noopener" class="card-link">阅读全文 →</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div><span class="footer-dot"></span> 系统运行中，每小时自动更新</div>
+        <div>数据来源：Hacker News · The Verge · OpenAI · DeepMind · TechCrunch · ArXiv</div>
+        <div style="margin-top:8px"><strong>TechPulse</strong> · AI驱动的科技资讯聚合平台 · © 2026</div>
+    </footer>
+
 </body>
 </html>
