@@ -1,0 +1,11 @@
+runtime: python39
+
+env: standard
+entrypoint: gunicorn -w 4 -b 0.0.0.0:8080 app:app
+
+env_variables:
+  OPENROUTER_KEYS: "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"
+  GROQ_KEYS: ""
+  TOGETHER_KEYS: ""
+  Google_KEYS: "AIzaSyAIRi940QpfoxN27DjNLEy9Hy1ONkUWCaM"
+  DeepSeek_KEYS: "sk-cd8b2a27fe634588a99ee317b98496f2"
