@@ -27,68 +27,24 @@ a{text-decoration:none;color:inherit}
 .price-item{display:flex;align-items:center;gap:8px;font-size:0.9em;white-space:nowrap}
 .price-btc{color:var(--orange)}.price-eth{color:#627eea}.price-sol{color:#9945ff}.up{color:var(--green)}.down{color:var(--red)}
 .main{max-width:1400px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 340px;gap:24px}
-.featured{background:linear-gradient(135deg,var(--card),var(--card-h));border:1px solid var(--bd);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 280px;min-height:300px;margin-bottom:24px}
-.featured-con{padding:32px;display:flex;flex-direction:column;justify-content:center}
-.badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#000;padding:6px 14px;border-radius:20px;font-size:0.75em;font-weight:700;text-transform:uppercase;width:fit-content;margin-bottom:16px}
-.featured-title{font-size:1.6em;font-weight:700;line-height:1.3;margin-bottom:16px}
-.featured-title a:hover{color:var(--orange)}
-.featured-meta{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:0.85em}
-.featured-img{background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:5em}
 .flash{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden;margin-bottom:24px}
 .flash-hdr{padding:20px 24px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,rgba(249,147,26,0.08),transparent)}
 .flash-title{font-size:1.1em;font-weight:700;display:flex;align-items:center;gap:10px}
-.flash-list{max-height:350px;overflow-y:auto}
+.flash-list{max-height:400px;overflow-y:auto}
 .flash-item{padding:14px 24px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:12px;transition:background .2s}
 .flash-item:hover{background:var(--card-h)}
 .flash-item .flash-time{width:45px;flex-shrink:0;color:var(--orange);font-weight:600;font-size:0.85em}
 .flash-item .flash-source{width:85px;flex-shrink:0;font-size:0.7em;font-weight:600;padding:3px 8px;border-radius:4px;color:#fff;text-align:center}
 .flash-item a{flex:1;font-size:0.9em;line-height:1.4}
 .flash-item a:hover{color:var(--orange)}
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
-.cat-section{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
-.cat-hdr{padding:16px 20px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
-.cat-hdr h3{font-size:1em;font-weight:700}
-.cat-badge{font-size:0.7em;font-weight:700;padding:4px 10px;border-radius:6px;color:#000}
-.cat-list{padding:8px}
-.cat-item{padding:12px;border-radius:8px;display:flex;gap:10px;transition:background .2s}
-.cat-item:hover{background:var(--card-h)}
-.cat-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
-.cat-content{flex:1}
-.cat-content a{font-size:0.85em;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cat-content a:hover{color:var(--orange)}
-.cat-meta{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
-.cat-time{font-size:0.7em;color:var(--muted)}
-.news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
-.news-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;transition:all .2s}
-.news-card:hover{border-color:var(--orange);transform:translateY(-2px)}
-.news-source{font-size:0.8em;font-weight:700;margin-bottom:8px}
-.news-card h3{font-size:1em;font-weight:600;line-height:1.4;margin-bottom:10px}
-.news-card h3 a:hover{color:var(--orange)}
-.news-summary{color:var(--txt);font-size:0.85em;line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.news-meta{display:flex;justify-content:space-between;align-items:center}
-.news-tags{display:flex;gap:6px;flex-wrap:wrap}
-.news-time{font-size:0.8em;color:var(--muted)}
-.tag{font-size:0.65em;font-weight:600;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,0.1)}
-.tag-bitcoin{background:rgba(247,147,26,0.2);color:#f7931a}
-.tag-ethereum{background:rgba(98,126,234,0.2);color:#627eea}
-.tag-defi{background:rgba(16,185,129,0.2);color:#10b981}
-.tag-nft{background:rgba(236,72,153,0.2);color:#ec4899}
-.tag-web3{background:rgba(139,92,246,0.2);color:#8b5cf6}
-.tag-regulation{background:rgba(239,68,68,0.2);color:#ef4444}
-.tag-tech{background:rgba(59,130,246,0.2);color:#3b82f6}
-.tag-opinion{background:rgba(245,158,11,0.2);color:#f59e0b}
-.tag-crypto{background:rgba(255,255,255,0.1);color:var(--txt)}
+.loading{text-align:center;padding:40px;color:var(--txt)}
+.spinner{display:inline-block;width:20px;height:20px;border:3px solid var(--bd);border-top-color:var(--orange);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 .sidebar{display:flex;flex-direction:column;gap:20px}
 .s-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
 .s-hdr{padding:16px 20px;border-bottom:1px solid var(--bd)}
 .s-hdr h3{font-size:1em;font-weight:700}
 .s-body{padding:12px}
-.trend-item{padding:12px;border-radius:10px;display:flex;gap:12px;align-items:flex-start;transition:background .2s}
-.trend-item:hover{background:var(--card-h)}
-.trend-num{width:28px;height:28px;background:linear-gradient(135deg,var(--orange),#fbbf24);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85em;color:#000;flex-shrink:0}
-.trend-content a{font-size:0.9em;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.trend-content a:hover{color:var(--orange)}
-.trend-src{font-size:0.75em;color:var(--muted);margin-top:4px;display:block}
 .market-row{padding:14px 12px;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
 .market-row:last-child{border-bottom:none}
 .market-coin{display:flex;align-items:center;gap:10px}
@@ -116,12 +72,20 @@ a{text-decoration:none;color:inherit}
 .filter{background:var(--card);border-radius:12px;padding:12px;margin-bottom:20px;display:flex;gap:8px;flex-wrap:wrap}
 .filter-btn{padding:8px 16px;border:1px solid var(--bd);background:transparent;color:var(--txt);border-radius:20px;font-size:0.85em;font-weight:500;cursor:pointer;transition:all .2s}
 .filter-btn:hover,.filter-btn.active{background:var(--orange);color:#000;border-color:var(--orange)}
-.hidden{display:none!important}
+.tag{font-size:0.65em;font-weight:600;padding:3px 8px;border-radius:10px;background:rgba(255,255,255,0.1)}
+.tag-bitcoin{background:rgba(247,147,26,0.2);color:#f7931a}
+.tag-ethereum{background:rgba(98,126,234,0.2);color:#627eea}
+.tag-defi{background:rgba(16,185,129,0.2);color:#10b981}
+.tag-nft{background:rgba(236,72,153,0.2);color:#ec4899}
+.tag-web3{background:rgba(139,92,246,0.2);color:#8b5cf6}
+.tag-regulation{background:rgba(239,68,68,0.2);color:#ef4444}
+.tag-tech{background:rgba(59,130,246,0.2);color:#3b82f6}
+.tag-opinion{background:rgba(245,158,11,0.2);color:#f59e0b}
+.tag-crypto{background:rgba(255,255,255,0.1);color:var(--txt)}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
 @media(max-width:1200px){.main{grid-template-columns:1fr}.sidebar{display:none}}
-@media(max-width:768px){.featured{grid-template-columns:1fr}.featured-img{display:none}.cat-grid{grid-template-columns:1fr}.news-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -144,9 +108,9 @@ a{text-decoration:none;color:inherit}
 <main class="main">
 <div class="content">
 <div class="stats">
-<div class="stat"><div class="stat-val">112</div><div class="stat-label">Articles</div></div>
-<div class="stat"><div class="stat-val">10</div><div class="stat-label">Sources</div></div>
-<div class="stat"><div class="stat-val">22:17</div><div class="stat-label">Updated</div></div>
+<div class="stat"><div class="stat-val" id="count">0</div><div class="stat-label">Articles</div></div>
+<div class="stat"><div class="stat-val" id="sources">0</div><div class="stat-label">Sources</div></div>
+<div class="stat"><div class="stat-val" id="time">--:--</div><div class="stat-label">Updated</div></div>
 </div>
 <div class="filter">
 <button class="filter-btn active" onclick="filterAll('all')">All</button>
@@ -158,17 +122,17 @@ a{text-decoration:none;color:inherit}
 <button class="filter-btn" onclick="filterAll('Regulation')">Regulation</button>
 <button class="filter-btn" onclick="filterAll('Tech')">Tech</button>
 </div>
-<div class="featured"><div class="featured-con"><div class="badge">🔥 Featured</div><h2 class="featured-title"><a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a></h2><p class="news-summary" style="display:block"></p><div class="featured-meta"><span style="color:#1386e2;font-weight:600">CoinDesk</span><span>2026-03-29 22:17</span></div></div><div class="featured-img">📰</div></div>
 <section class="flash">
-<div class="flash-hdr"><div class="flash-title"><span>⚡</span> Breaking News</div><span style="color:var(--muted);font-size:0.85em">Updated 22:17:11</span></div>
-<div class="flash-list"><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/business/2026/03/28/crypto-s-future-is-bright-in-the-context-of-ai-s-assault-on-software-firms-says-kraken-backed-investment-firm" target="_blank">Crypto's future is bright in the context of AI's assault on software firms, says Kraken-backed investment firm</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/tech/2026/03/28/here-s-what-next-as-anthropic-s-most-powerful-ai-model-leaked-via-unsecured-data-cache" target="_blank">Here's what next as Anthropic's most powerful AI model leaked via unsecured data cache</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1386e2">CoinDesk</span><a href="https://www.coindesk.com/tech/2026/03/28/watch-out-bitcoin-devs-google-says-post-quantum-migration-needs-to-happen-by-2029" target="_blank">Watch out Bitcoin devs. Google says post-quantum migration needs to happen by 2029.</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1a1a1a">The Block</span><a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1a1a1a">The Block</span><a href="https://www.theblock.co/post/395571/world-foundation-subsidiary-sells-65-million-in-wld-tokens-through-otc-deals-as-token-hits-all-time-low?utm_source=rss&utm_medium=rss" target="_blank">World Foundation subsidiary sells $65 million in WLD tokens through OTC deals as token hits all-time low</a></div><div class="flash-item"><span class="flash-time">22:16</span><span class="flash-source" style="background:#1a1a1a">The Block</span><a href="https://www.theblock.co/post/395568/morgan-stanley-sets-spot-bitcoin-etf-fee-at-0-14-undercutting-every-rival-on-the-market?utm_source=rss&utm_medium=rss" target="_blank">Morgan Stanley sets spot bitcoin ETF fee at 0.14%, undercutting every rival on the market</a></div></div>
+<div class="flash-hdr"><div class="flash-title"><span>⚡</span> Breaking News</div><span id="updateTime" style="color:var(--muted);font-size:0.85em">Loading...</span></div>
+<div class="flash-list" id="newsContainer">
+<div class="loading"><div class="spinner"></div><p>Fetching latest news...</p></div>
+</div>
 </section>
-<div class="cat-grid"><div class="cat-section"><div class="cat-header"><h3>Bitcoin</h3><span class="cat-badge" style="background:#f7931a">BTC</span></div><div class="cat-list"><div class="cat-item"><span class="cat-dot" style="background:#1386e2"></span><div class="cat-content"><a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1386e2"></span><div class="cat-content"><a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1386e2"></span><div class="cat-content"><a href="https://www.coindesk.com/tech/2026/03/28/watch-out-bitcoin-devs-google-says-post-quantum-migration-needs-to-happen-by-2029" target="_blank">Watch out Bitcoin devs. Google says post-quantum migration needs to happen by 2029.</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1a1a1a"></span><div class="cat-content"><a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1a1a1a"></span><div class="cat-content"><a href="https://www.theblock.co/post/395568/morgan-stanley-sets-spot-bitcoin-etf-fee-at-0-14-undercutting-every-rival-on-the-market?utm_source=rss&utm_medium=rss" target="_blank">Morgan Stanley sets spot bitcoin ETF fee at 0.14%, undercutting every rival on the market</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="cat-time">22:16</span></div></div></div></div></div><div class="cat-section"><div class="cat-header"><h3>Ethereum</h3><span class="cat-badge" style="background:#627eea">ETH</span></div><div class="cat-list"><div class="cat-item"><span class="cat-dot" style="background:#1386e2"></span><div class="cat-content"><a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1a1a1a"></span><div class="cat-content"><a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1a1a1a"></span><div class="cat-content"><a href="https://www.theblock.co/post/395541/miladys-loyalty-pledge-unnecessary-culture-schism-ethereum-community?utm_source=rss&utm_medium=rss" target="_blank">Ethereum Foundation mandate sparks debate over loyalty pledges, Milady-inspired branding</a><div class="cat-meta"><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#22c55e"></span><div class="cat-content"><a href="https://decrypt.co/362556/tether-taps-kpmg-for-first-big-four-usdt-audit-amid-u-s-expansion-push" target="_blank">Tether Taps KPMG for First Big Four USDT Audit Amid U.S. Expansion Push</a><div class="cat-meta"><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#f97316"></span><div class="cat-content"><a href="https://cryptoslate.com/safe-2-year-treasury-starting-to-crack/" target="_blank">Is anywhere safe as Bitcoin weakens? Why even the 2-year Treasury is starting to crack</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span><span class="cat-time">22:16</span></div></div></div></div></div><div class="cat-section"><div class="cat-header"><h3>DeFi</h3><span class="cat-badge" style="background:#10b981">DeFi</span></div><div class="cat-list"><div class="cat-item"><span class="cat-dot" style="background:#1386e2"></span><div class="cat-content"><a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a><div class="cat-meta"><span class="tag tag-defi">DeFi</span><span class="tag tag-web3">Web3</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#1a1a1a"></span><div class="cat-content"><a href="https://www.theblock.co/post/395492/ecb-paper-defi-governance-concentrated-results-affect-regulatory-anchor-points?utm_source=rss&utm_medium=rss" target="_blank">ECB paper finds DeFi governance concentrated, warns results could affect ‘regulatory anchor points’</a><div class="cat-meta"><span class="tag tag-defi">DeFi</span><span class="tag tag-web3">Web3</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#22c55e"></span><div class="cat-content"><a href="https://decrypt.co/362632/why-gamestop-bitcoin-covered-call-strategy" target="_blank">Why GameStop Put $315 Million in Bitcoin Into a Covered Call Options Strategy</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-defi">DeFi</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#22c55e"></span><div class="cat-content"><a href="https://decrypt.co/362567/bitcoin-dips-under-67k-as-geopolitical-uncertainty-treasury-yields-spook-traders" target="_blank">Bitcoin Dips Under $67K as Geopolitical Uncertainty, Treasury Yields Spook Traders</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-defi">DeFi</span><span class="cat-time">22:16</span></div></div></div><div class="cat-item"><span class="cat-dot" style="background:#f97316"></span><div class="cat-content"><a href="https://cryptoslate.com/homebuyers-can-now-borrow-against-bitcoin-to-get-a-mortgage-without-selling-or-liquidation-risk/" target="_blank">Homebuyers can now borrow against Bitcoin to get a mortgage without selling or liquidation risk</a><div class="cat-meta"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-defi">DeFi</span><span class="cat-time">22:16</span></div></div></div></div></div></div>
-<div class="news-grid"><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-defi">DeFi</span><span class="tag tag-web3">Web3</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-regulation">Regulation</span><span class="tag tag-opinion">Opinion</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-regulation">Regulation</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/tech/2026/03/28/here-s-how-bitcoin-ethereum-and-other-networks-are-preparing-for-the-looming-quantum-threat" target="_blank">Here's how bitcoin, Ethereum and other networks are preparing for the looming quantum threat</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/business/2026/03/28/crypto-s-future-is-bright-in-the-context-of-ai-s-assault-on-software-firms-says-kraken-backed-investment-firm" target="_blank">Crypto's future is bright in the context of AI's assault on software firms, says Kraken-backed investment firm</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/tech/2026/03/28/here-s-what-next-as-anthropic-s-most-powerful-ai-model-leaked-via-unsecured-data-cache" target="_blank">Here's what next as Anthropic's most powerful AI model leaked via unsecured data cache</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-regulation">Regulation</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1386e2">CoinDesk</div><h3><a href="https://www.coindesk.com/tech/2026/03/28/watch-out-bitcoin-devs-google-says-post-quantum-migration-needs-to-happen-by-2029" target="_blank">Watch out Bitcoin devs. Google says post-quantum migration needs to happen by 2029.</a></h3><p class="news-summary"></p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395574/sen-warren-targets-bitmain-trump-family-ties-in-letter-to-commerce-secretary-lutnick-bloomberg?utm_source=rss&utm_medium=rss" target="_blank">Sen. Warren targets Bitmain-Trump family ties in letter to Commerce Secretary Lutnick: Bloomberg</a></h3><p class="news-summary">The Department of Homeland Security has probed whether Bitmain's popular mining machines could be exploited for espionage or endanger the U.S. grid.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span><span class="tag tag-ethereum">Ethereum</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395571/world-foundation-subsidiary-sells-65-million-in-wld-tokens-through-otc-deals-as-token-hits-all-time-low?utm_source=rss&utm_medium=rss" target="_blank">World Foundation subsidiary sells $65 million in WLD tokens through OTC deals as token hits all-time low</a></h3><p class="news-summary">WLD hit a new all-time low of about $0.24 on Saturday, down roughly 97% from its March 2024 peak near $11.82, though it rebounded on the news.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395568/morgan-stanley-sets-spot-bitcoin-etf-fee-at-0-14-undercutting-every-rival-on-the-market?utm_source=rss&utm_medium=rss" target="_blank">Morgan Stanley sets spot bitcoin ETF fee at 0.14%, undercutting every rival on the market</a></h3><p class="news-summary">Bloomberg ETF analyst James Seyffart called the pricing a "big move" and predicted that the fund may launch in early April.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395549/what-the-hell-crypto-frustration-boils-over-as-stablecoin-fight-stalls-bill?utm_source=rss&utm_medium=rss" target="_blank">‘What the hell?’ — Crypto frustration boils over as stablecoin fight stalls bill</a></h3><p class="news-summary">Frustrations are continuing to boil over in the crypto industry as it finds itself again at an impasse over the treatment of stablecoins.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395541/miladys-loyalty-pledge-unnecessary-culture-schism-ethereum-community?utm_source=rss&utm_medium=rss" target="_blank">Ethereum Foundation mandate sparks debate over loyalty pledges, Milady-inspired branding</a></h3><p class="news-summary">"The issue is whether or not people support CROPS and going in that direction, the issue is how the EF is going about it,” Optimism's Mark Tyneway said.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-ethereum">Ethereum</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395515/california-bars-officials-prediction-market-insider-betting-federal-ban-shape?utm_source=rss&utm_medium=rss" target="_blank">California bars officials from prediction market insider betting as federal ban takes shape</a></h3><p class="news-summary">Prediction market platforms are tightening trading restrictions and surveillance tools as concerns grow over insider participants.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-opinion">Opinion</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395512/ripple-ceo-garlinghouse-touts-record-q1-cautions-against-policy-weaponization-derailing-progress?utm_source=rss&utm_medium=rss" target="_blank">Ripple CEO Garlinghouse touts ‘record’ Q1, cautions against policy weaponization derailing progress</a></h3><p class="news-summary">Largely optimistic the CLARITY Act will be passed, Brad Garlinghouse revised his prediction for when the legislation with be finalized.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-opinion">Opinion</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395492/ecb-paper-defi-governance-concentrated-results-affect-regulatory-anchor-points?utm_source=rss&utm_medium=rss" target="_blank">ECB paper finds DeFi governance concentrated, warns results could affect ‘regulatory anchor points’</a></h3><p class="news-summary">ECB research finds large percentages of DeFi governance tokens are tied to exchanges and protocol-linked wallets.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-defi">DeFi</span><span class="tag tag-web3">Web3</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395128/cryptos-popularity-among-kids-drove-x-games-moonpay-deal-new-energy?utm_source=rss&utm_medium=rss" target="_blank">Crypto’s popularity among kids drove X Games-MoonPay deal: ‘New energy and new transformation’</a></h3><p class="news-summary">Crypto companies eager to attract new users have been sponsoring sports teams across various leagues for years.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-crypto">Crypto</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395490/early-bitcoin-whale-sends-33-million-binance-extending-long-running-exchange-deposits?utm_source=rss&utm_medium=rss" target="_blank">Early bitcoin whale sends another $33 million to Binance, extending long-running exchange deposits</a></h3><p class="news-summary">An OG bitcoin whale has sent another $33 million worth of BTC to Binance as a possible selling spree continues amid market pressure.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-bitcoin">Bitcoin</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/394892/umbra-opens-privacy-wallet-to-the-public-on-solana-powered-by-arciums-encrypted-execution-engine?utm_source=rss&utm_medium=rss" target="_blank">Umbra opens privacy wallet to the public on Solana, powered by Arcium’s encrypted execution engine</a></h3><p class="news-summary">Umbra has opened its private wallet to the public, enabling shielded transfers, encrypted swaps, and compliance tools for Solana users.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-regulation">Regulation</span></span><span class="news-time">22:16</span></div></div><div class="news-card"><div class="news-source" style="color:#1a1a1a">The Block</div><h3><a href="https://www.theblock.co/post/395454/prediction-markets-top-20-billion-in-monthly-volume-as-geopolitics-now-drives-majority-of-activity-trm-labs?utm_source=rss&utm_medium=rss" target="_blank">Prediction markets top $20 billion in monthly volume as geopolitics now drives majority of activity: TRM Labs</a></h3><p class="news-summary">Prediction markets have surged past $20 billion in monthly volume, driven by geopolitics, U.S. politics, and macroeconomic event trading.</p><div class="news-meta"><span class="news-tags"><span class="tag tag-opinion">Opinion</span></span><span class="news-time">22:16</span></div></div></div>
-<div class="update">Sources: <span>CoinDesk</span> • <span>The Block</span> • <span>Decrypt</span> • <span>CryptoSlate</span> • <span>Bitcoinist</span> • <span>CoinTelegraph</span> + More | Updated: <span>2026-03-29 22:17:11</span></div>
+<div class="update">
+Sources: <span>CoinDesk</span> • <span>The Block</span> • <span>Decrypt</span> • <span>CryptoSlate</span> • <span>Bitcoinist</span> • <span>CoinTelegraph</span> + More | Real-time updates every 2 minutes
+</div>
 </div>
 <aside class="sidebar">
-<div class="s-card"><div class="s-hdr"><h3>🔥 Trending</h3></div><div class="s-body"><div class="trending-item"><span class="trending-num">1</span><div class="trend-content"><a href="https://www.coindesk.com/markets/2026/03/29/xrp-tests-usd1-33-as-rising-leverage-and-weak-price-action-create-unstable-setup" target="_blank">XRP tests $1.33 as rising leverage and weak price action create unstable setup</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">2</span><div class="trend-content"><a href="https://www.coindesk.com/tech/2026/03/25/bittensor-ecosystem-tokens-value-hit-usd1-5-billion-as-jensen-huang-endorsement-supports-tao-rally" target="_blank">Bittensor ecosystem tokens' value hit $1.5 billion as Jensen Huang endorsement supports TAO rally</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">3</span><div class="trend-content"><a href="https://www.coindesk.com/tech/2026/03/29/inside-aave-s-governance-battle-as-defi-giant-prepares-for-upgrade" target="_blank">Inside Aave’s governance battle as DeFi giant prepares for upgrade</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">4</span><div class="trend-content"><a href="https://www.coindesk.com/opinion/2026/03/28/crypto-needs-a-reset-before-the-next-bull-run" target="_blank">Crypto needs a reset before the next bull run</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">5</span><div class="trend-content"><a href="https://www.coindesk.com/policy/2026/03/28/washington-sues-kalshi-as-states-ramp-up-legal-pressure-against-prediction-markets" target="_blank">Washington sues Kalshi as states ramp up legal pressure against prediction markets</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">6</span><div class="trend-content"><a href="https://www.coindesk.com/markets/2026/03/28/kalshi-secures-license-to-offer-margin-trading-to-institutional-investors" target="_blank">Kalshi secures license to offer margin trading to institutional investors</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">7</span><div class="trend-content"><a href="https://www.coindesk.com/policy/2026/03/28/canada-moves-to-ban-crypto-donations-for-election-campaigns-following-uk" target="_blank">Canada moves to ban crypto donations for election campaigns following UK</a><span class="trend-src">CoinDesk</span></div></div><div class="trending-item"><span class="trending-num">8</span><div class="trend-content"><a href="https://www.coindesk.com/markets/2026/03/28/why-bitcoin-s-compressed-valuation-offers-reduced-downside-risk-versus-stocks" target="_blank">Why bitcoin's 'compressed' valuation offers reduced downside risk versus stocks</a><span class="trend-src">CoinDesk</span></div></div></div></div>
 <div class="s-card"><div class="s-hdr"><h3>📊 Markets</h3></div><div class="s-body" style="padding:0">
 <div class="market-row"><div class="market-coin"><div class="market-icon" style="background:#f7931a">₿</div><div><div class="market-name">Bitcoin</div><div class="market-sym">BTC</div></div></div><div class="market-price"><div class="market-value">$67,234</div><div class="market-change m-up">+2.34%</div></div></div>
 <div class="market-row"><div class="market-coin"><div class="market-icon" style="background:#627eea">Ξ</div><div><div class="market-name">Ethereum</div><div class="market-sym">ETH</div></div></div><div class="market-price"><div class="market-value">$3,456</div><div class="market-change m-down">-0.56%</div></div></div>
@@ -195,19 +159,149 @@ a{text-decoration:none;color:inherit}
 <footer class="footer">
 <div class="footer-logo">⛓️ BlockWorld</div>
 <div class="footer-links"><a href="#">About</a><a href="#">Contact</a><a href="#">Advertise</a><a href="#">Disclaimer</a><a href="#">Privacy</a></div>
-<p class="footer-copy">© 2026 BlockWorld | Your #1 Blockchain News Source</p>
+<p class="footer-copy">© 2026 BlockWorld | Your #1 Blockchain News Source - Real-time Updates</p>
 </footer>
+
 <script>
-let currentFilter='all';
-function filterAll(cat){
-currentFilter=cat;
-document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.toggle('active',b.textContent===(cat==='all'?'All':cat))});
-document.querySelectorAll('.news-card,.cat-section,.flash-item,.trend-item').forEach(el=>{
-const cats=el.dataset.cats?JSON.parse(el.dataset.cats):[];
-el.classList.toggle('hidden',cat!=='all'&&!cats.includes(cat));
-});
+const RSS_FEEDS = {
+    "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+    "The Block": "https://www.theblock.co/rss.xml",
+    "Decrypt": "https://decrypt.co/feed",
+    "CryptoSlate": "https://cryptoslate.com/feed/",
+    "Bitcoinist": "https://bitcoinist.com/feed/",
+    "CoinTelegraph": "https://cointelegraph.com/rss",
+    "CryptoNews": "https://cryptonews.com/rss/",
+    "BitcoinMagazine": "https://bitcoinmagazine.com/feed",
+    "Blockworks": "https://blockworks.co/feed/",
+    "The Defiant": "https://thedefiant.io/feed",
+};
+
+const KEYWORDS = {
+    "Bitcoin": ["bitcoin", "btc", "satoshi", "halving", "mining"],
+    "Ethereum": ["ethereum", "eth", "ether", "gas", "layer 2", "rollup"],
+    "DeFi": ["defi", "lending", "borrowing", "yield", "uniswap", "aave"],
+    "NFT": ["nft", "opensea", "blur", "digital art"],
+    "Web3": ["web3", "dao", "governance"],
+    "Regulation": ["sec", "regulation", "law", "legal", "lawsuit"],
+    "Tech": ["protocol", "developer", "node", "infrastructure"],
+    "Opinion": ["opinion", "analysis", "prediction"],
+};
+
+const COLORS = {
+    "CoinDesk": "#1386e2", "The Block": "#1a1a1a", "Decrypt": "#22c55e",
+    "CryptoSlate": "#f97316", "Bitcoinist": "#f7931a", "CoinTelegraph": "#2876bd",
+    "CryptoNews": "#e84142", "BitcoinMagazine": "#f7931a", "Blockworks": "#8b5cf6",
+    "The Defiant": "#10b981",
+};
+
+let allNews = [];
+let currentFilter = 'all';
+
+function categorize(title, summary) {
+    const text = (title + " " + summary).toLowerCase();
+    const cats = [];
+    for (const [cat, keywords] of Object.entries(KEYWORDS)) {
+        for (const kw of keywords) {
+            if (text.includes(kw)) {
+                cats.push(cat);
+                break;
+            }
+        }
+    }
+    return cats.length ? cats.slice(0, 2) : ["Crypto"];
 }
-setTimeout(()=>{location.reload()},5*60*1000);
+
+function makeTag(cat) {
+    const cls = ["bitcoin", "ethereum", "defi", "nft", "web3", "regulation", "tech", "opinion"].includes(cat.toLowerCase()) ? cat.toLowerCase() : "crypto";
+    return `<span class="tag tag-${cls}">${cat}</span>`;
+}
+
+async function fetchNews() {
+    const container = document.getElementById('newsContainer');
+    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Fetching latest news...</p></div>';
+    
+    allNews = [];
+    const now = new Date();
+    
+    try {
+        for (const [source, url] of Object.entries(RSS_FEEDS)) {
+            try {
+                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+                const data = await response.json();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, "text/xml");
+                const items = xml.querySelectorAll("item");
+                
+                items.forEach((item, idx) => {
+                    if (idx < 12) {
+                        const title = item.querySelector("title")?.textContent || "";
+                        const link = item.querySelector("link")?.textContent || "";
+                        const summary = (item.querySelector("description")?.textContent || "").replace(/<[^>]+>/g, "").substring(0, 200);
+                        const cats = categorize(title, summary);
+                        
+                        allNews.push({
+                            title,
+                            link,
+                            source,
+                            summary,
+                            categories: cats,
+                            time: now.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+                            color: COLORS[source] || "#8b5cf6"
+                        });
+                    }
+                });
+            } catch (e) {
+                console.log(`Failed to fetch ${source}`);
+            }
+        }
+        
+        renderNews();
+        updateStats();
+    } catch (e) {
+        container.innerHTML = '<div class="loading"><p>Error loading news. Retrying...</p></div>';
+    }
+}
+
+function renderNews() {
+    const container = document.getElementById('newsContainer');
+    const filtered = currentFilter === 'all' ? allNews : allNews.filter(n => n.categories.includes(currentFilter));
+    
+    if (filtered.length === 0) {
+        container.innerHTML = '<div class="loading"><p>No articles found for this category</p></div>';
+        return;
+    }
+    
+    container.innerHTML = filtered.map(n => `
+        <div class="flash-item">
+            <span class="flash-time">${n.time}</span>
+            <span class="flash-source" style="background:${n.color}">${n.source}</span>
+            <a href="${n.link}" target="_blank">${n.title}</a>
+        </div>
+    `).join('');
+}
+
+function updateStats() {
+    document.getElementById('count').textContent = allNews.length;
+    document.getElementById('sources').textContent = new Set(allNews.map(n => n.source)).size;
+    document.getElementById('updateTime').textContent = `Updated ${new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})}`;
+}
+
+function filterAll(cat) {
+    currentFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.textContent === (cat === 'all' ? 'All' : cat));
+    });
+    renderNews();
+}
+
+// Initial fetch
+fetchNews();
+
+// Refresh every 2 minutes
+setInterval(fetchNews, 2 * 60 * 1000);
+
+// Update time every minute
+setInterval(updateStats, 60 * 1000);
 </script>
 </body>
 </html>
