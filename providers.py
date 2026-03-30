@@ -36,3 +36,26 @@ async def call_together(prompt, key):
             "messages": [{"role": "user", "content": prompt}]
         }
     )
+
+async def call_deepseek(prompt, key):
+    return await request_api(
+        "https://api.deepseek.com/chat/completions",
+        {"Authorization": f"Bearer {key}"},
+        {
+            "model": "deepseek-chat",
+            "messages": [{"role": "user", "content": prompt}]
+        }
+    )
+
+async def call_gemini(prompt, key):
+    import aiohttp
+    timeout = aiohttp.ClientTimeout(total=15)
+    async with aiohttp.ClientSession(timeout=timeout) as session:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={key}"
+        payload = {
+            "contents": [{
+                "parts": [{"text": prompt}]
+            }]
+        }
+        async with session.post(url, json=payload) as r:
+            return await r.json()
